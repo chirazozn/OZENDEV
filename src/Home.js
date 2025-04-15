@@ -30,7 +30,6 @@ const Home = () => {
   if (!showContent) {
     return (
       <div className="video-container">
-        <h3>Bienvenue</h3>
         <video src={videoIntro} autoPlay muted onEnded={() => setShowContent(true)} />
       </div>
     );
