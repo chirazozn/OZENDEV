@@ -30,7 +30,14 @@ const Home = () => {
   if (!showContent) {
     return (
       <div className="video-container">
-        <video src={videoIntro} autoPlay muted onEnded={() => setShowContent(true)} />
+        <video 
+  src={videoIntro} 
+  autoPlay 
+  muted 
+  playsInline 
+  preload="auto" 
+  onEnded={() => setShowContent(true)} 
+/>
       </div>
     );
   }
