@@ -4,17 +4,53 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaMapMarkerAlt } from 'react-icons
 import './Home.css';
 import videoIntro from './assets/intro.mp4';
 import logo from './assets/logo.png';
-import marketingImg from './assets/marketing.jpg';
-import webImg from './assets/web.jpg';
-import mobileImg from './assets/mobile.jpg';
-import designImg from './assets/design.jpg';
+import { Link } from 'react-router-dom'; // Importer Link pour le routage
+import { useLocation } from 'react-router-dom';
 import hamburgerIcon from './assets/hamburger-icon.png';
 import contactImg from './assets/contact.jpg';
 
 const Home = () => {
   const [showContent, setShowContent] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [services, setServices] = useState([]);
+ 
+  const location = useLocation();
 
+useEffect(() => {
+  const searchParams = new URLSearchParams(location.search);
+  const skipIntro = searchParams.get('skipIntro');
+
+  if (skipIntro === 'true') {
+    setShowContent(true);
+  } else {
+    const timer = setTimeout(() => {
+      setShowContent(true);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }
+}, [location.search]);
+
+
+
+useEffect(() => {
+  if (location.hash) {
+    const section = document.querySelector(location.hash);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+}, [location]);
+  useEffect(() => {
+    fetch('http://localhost:3001/api/services')
+      .then(res => res.json())
+      .then(data => {
+        console.log('Services reçus :', data); // <-- ajoute ceci
+        setServices(data);
+      })
+      .catch(err => console.error('Erreur lors du chargement des services:', err));
+  }, []);
+  
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowContent(true);
@@ -41,13 +77,8 @@ const Home = () => {
       </div>
     );
   }
-//LL
-  const services = [
-    { title: 'Marketing Digital', image: marketingImg },
-    { title: 'Création de Sites Web', image: webImg },
-    { title: 'Applications Mobiles', image: mobileImg },
-    { title: 'Design Graphique', image: designImg }
-  ];
+
+
 
   return (
     <div className="main-container">
@@ -110,9 +141,12 @@ const Home = () => {
               initial={{ opacity: 0, y: 50 }}
               transition={{ duration: 0.6 }}
             >
-              <img src={service.image} alt={service.title} />
-              <h3>{service.title}</h3>
-              <button>En savoir plus</button>
+<img src={`http://localhost:3001/${service.image_url}`} alt={service.title} />
+<h3>{service.name}</h3>
+
+<a href={`/services/${service.id}`}>
+  <button>En savoir plus</button>
+</a>
             </motion.div>
           ))}
         </div>
