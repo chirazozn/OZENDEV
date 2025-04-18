@@ -13,7 +13,9 @@ app.use('/images', express.static(path.join(__dirname, '../public/images')));
 // Middleware
 app.use(cors()); // Allows cross-origin requests (e.g., from your React frontend)
 app.use(express.json()); // Parses incoming JSON requests
-
+app.use(cors({
+  origin: 'https://ton-frontend.vercel.app' // remplace avec ton vrai lien Vercel
+}));
 // Routes
 app.use('/api', serviceRoutes); // All service-related routes will be handled by serviceRoutes
 
