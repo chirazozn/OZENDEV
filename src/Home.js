@@ -41,7 +41,7 @@ useEffect(() => {
   }
 }, [location]);
   useEffect(() => {
-    fetch('http://localhost:3001/api/services')
+    fetch('https://ozendev-backend.onrender.com/api/services')
       .then(res => res.json())
       .then(data => {
         console.log('Services reçus :', data); // <-- ajoute ceci

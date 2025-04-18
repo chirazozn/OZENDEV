@@ -20,7 +20,7 @@ const ServiceDetails = () => {
     };
   
   useEffect(() => {
-    fetch(`http://localhost:3001/api/services/${id}`)
+    fetch(`https://ozendev-backend.onrender.com/api/services/${id}`)
       .then(res => res.json())
       .then(data => setService(data))
       .catch(err => console.error('Error loading service details:', err));
