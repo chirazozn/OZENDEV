@@ -2,7 +2,9 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = 3001; // You can change this port if needed
+//const port = 3001; // You can change this port if needed
+const port = process.env.PORT || 3001;
+
 const serviceRoutes = require('./routes/serviceroute'); // Import your routes file
 const path = require('path');
 
