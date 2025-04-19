@@ -1,18 +1,20 @@
 const mysql = require('mysql2');
 
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'YES',
-  database: 'ozendev',
-});
-
-db.connect((err) => {
-  if (err) {
-    console.error('Database connection error:', err);
-  } else {
-    console.log('Connected to MySQL database');
+const connection = mysql.createConnection({
+  host: 'gateway01.eu-central-1.prod.aws.tidbcloud.com',
+  port: 4000,
+  user: 'tbdRXVuaY9SEoGL.root',
+  password: 'tR5XzCGHYYH8RFrg', // remplace avec ton mot de passe généré
+  database: 'test',
+  ssl: {
+    ca: require('fs').readFileSync('./certs/tidb-server-ca.pem') // ou le chemin absolu vers le .pem
   }
 });
 
-module.exports = db;
+connection.connect((err) => {
+  if (err) {
+    console.error('Erreur de connexion à TiDB:', err);
+  } else {
+    console.log('Connecté à TiDB Serverless !');
+  }
+});
