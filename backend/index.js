@@ -4,7 +4,9 @@ const cors = require('cors');
 const app = express();
 //const port = 3001; // You can change this port if needed
 const port = process.env.PORT || 3001;
-
+app.use(cors({
+  origin: 'https://ozendev-qgja-git-main-chirazs-projects-a8d77e4c.vercel.app/' // remplace avec ton vrai lien Vercel
+}));
 const serviceRoutes = require('./routes/serviceroute'); // Import your routes file
 const path = require('path');
 
@@ -13,9 +15,7 @@ app.use('/images', express.static(path.join(__dirname, '../public/images')));
 // Middleware
 app.use(cors()); // Allows cross-origin requests (e.g., from your React frontend)
 app.use(express.json()); // Parses incoming JSON requests
-app.use(cors({
-  origin: 'https://ton-frontend.vercel.app' // remplace avec ton vrai lien Vercel
-}));
+
 // Routes
 app.use('/api', serviceRoutes); // All service-related routes will be handled by serviceRoutes
 
