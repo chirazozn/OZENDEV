@@ -19,13 +19,21 @@ const ServiceDetails = () => {
       setMenuOpen(!menuOpen);
     };
   
-  useEffect(() => {
-    fetch(`https://ozendev-backend.onrender.com/api/services/${id}`)
-      .then(res => res.json())
-      .then(data => setService(data))
-      .catch(err => console.error('Error loading service details:', err));
-  }, [id]);
-
+    useEffect(() => {
+        fetch(`https://ozendev-backend.onrender.com/api/services/${id}`)
+          .then(res => {
+            if (!res.ok) {
+              throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            return res.json();
+          })
+          .then(data => {
+            console.log('Service details:', data); // 🔍 Affiche ce que l'API retourne
+            setService(data);
+          })
+          .catch(err => console.error('Error loading service details:', err));
+      }, [id]);
+      
  
 
   if (!service) {
