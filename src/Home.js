@@ -141,7 +141,7 @@ useEffect(() => {
               initial={{ opacity: 0, y: 50 }}
               transition={{ duration: 0.6 }}
             >
-<img src={`http://localhost:3001/${service.image_url}`} alt={service.title} />
+<img src={`https://ozendev-backend.onrender.com/${service.image_url}`} alt={service.title} />
 <h3>{service.name}</h3>
 
 <a href={`/services/${service.id}`}>

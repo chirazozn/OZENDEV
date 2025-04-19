@@ -62,7 +62,7 @@ const ServiceDetails = () => {
       <section
   className="hero-section"
   style={{
-    backgroundImage: `url(http://localhost:3001/${service.image_url})`,
+    backgroundImage: `url(https://ozendev-backend.onrender.com/${service.image_url})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -103,7 +103,7 @@ const ServiceDetails = () => {
     {service.realisation.map((item, index) => (
       <SwiperSlide key={index}>
         <div className="realisation-item">
-          <img src={`http://localhost:3001/${item.image}`} alt={item.titre} />
+          <img src={`https://ozendev-backend.onrender.com/${item.image}`} alt={item.titre} />
           <h3>{item.titre}</h3>
           <p>{item.description}</p>
         </div>
