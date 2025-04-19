@@ -1,6 +1,7 @@
 // Import required modules
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 //const port = 3001; // You can change this port if needed
 const port = process.env.PORT || 3001;
@@ -15,7 +16,6 @@ app.use(express.json()); // Parses incoming JSON requests
 
 // Routes
 const serviceRoutes = require('./routes/serviceroute'); // Import your routes file
-const path = require('path');
 app.use('/api', serviceRoutes); // All service-related routes will be handled by serviceRoutes
 
 // Default route (Optional)
