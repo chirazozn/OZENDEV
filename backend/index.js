@@ -1,15 +1,17 @@
 // Import required modules
 const express = require('express');
-const cors = require('cors');
-const path = require('path');
+
 const app = express();
+const cors = require('cors');
+app.use(cors({
+  origin: 'ozendev2-git-main-chirazs-projects-a8d77e4c.vercel.app/' // remplace avec ton vrai lien Vercel
+}));
+const path = require('path');
+app.use('/images', express.static(path.join(__dirname, '../public/images')));
+
 //const port = 3001; // You can change this port if needed
 const port = process.env.PORT || 3001;
-app.use(cors({
-  origin: 'https://ozendev-qgja-git-main-chirazs-projects-a8d77e4c.vercel.app/' // remplace avec ton vrai lien Vercel
-}));
-// Pour servir les images depuis /public/images
-app.use('/images', express.static(path.join(__dirname, '../public/images')));
+
 // Middleware
 app.use(cors()); // Allows cross-origin requests (e.g., from your React frontend)
 app.use(express.json()); // Parses incoming JSON requests
