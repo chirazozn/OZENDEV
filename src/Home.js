@@ -40,6 +40,7 @@ useEffect(() => {
     }
   }
 }, [location]);
+
   useEffect(() => {
     fetch('https://ozendev-backend.onrender.com/api/services')
       .then(res => res.json())
@@ -133,7 +134,8 @@ useEffect(() => {
       <section id="services" className="services-section">
         <h2>Nos Services</h2>
         <div className="services-grid">
-          {services.map((service, index) => (
+        {Array.isArray(services) && services.map((service, index) => (
+
             <motion.div
               className="service-card"
               key={index}
