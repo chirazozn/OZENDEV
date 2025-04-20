@@ -349,6 +349,24 @@ contact  SECTION
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;
 }
+.contact-icons {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.icon-contact {
+  font-size: 30px;
+  color: #000;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.icon-contact:hover {
+  transform: scale(1.2);
+  color: #007bff; /* bleu roi si tu veux, remplace avec royal blue */
+}
 
 @media (max-width: 768px) {
   .contact-section h2 {

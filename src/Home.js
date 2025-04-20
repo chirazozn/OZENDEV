@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaFacebook, FaInstagram, FaLinkedin, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaLinkedin, FaPhone, FaEnvelope ,FaMapMarkerAlt } from 'react-icons/fa';
 import './Home.css';
 import videoIntro from './assets/intro.mp4';
 import logo from './assets/logo.png';
@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'; // Importer Link pour le routage
 import { useLocation } from 'react-router-dom';
 import hamburgerIcon from './assets/hamburger-icon.png';
 import contactImg from './assets/contact.jpg';
+
 
 const Home = () => {
   const [showContent, setShowContent] = useState(false);
@@ -215,6 +216,19 @@ useEffect(() => {
       <section id="contact" className="contact-section">
         <h2>Contact</h2>
         <p>Vous avez un projet ou besoin de support ? Nous serions ravis d’échanger avec vous !</p>
+      
+      
+      
+      
+        <div className="contact-icons">
+  <a href="tel:0770716047" title="Appeler">
+    <FaPhone className="icon-contact" />
+  </a>
+  <a href="mailto:inovadev.contact1@gmail.com" title="Envoyer un e-mail">
+    <FaEnvelope className="icon-contact" />
+  </a>
+</div>
+
 
         <div className="contact-container">
           <img src={contactImg} alt="Contact" className="contact-img" />
