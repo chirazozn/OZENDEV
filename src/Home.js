@@ -53,10 +53,11 @@ const Home = () => {
       setSuccess("Erreur serveur.");
     }
   };
+
+
   const isValidEmail = (email) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
-    
+    return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);  };
+  
   
 useEffect(() => {
   const searchParams = new URLSearchParams(location.search);
