@@ -358,14 +358,14 @@ contact  SECTION
 
 .icon-contact {
   font-size: 30px;
-  color: #000;
+  color: #002244;
   transition: transform 0.3s ease, color 0.3s ease;
   cursor: pointer;
 }
 
 .icon-contact:hover {
   transform: scale(1.2);
-  color: #007bff; /* bleu roi si tu veux, remplace avec royal blue */
+  color: #FFD700; /* bleu roi si tu veux, remplace avec royal blue */
 }
 
 @media (max-width: 768px) {
