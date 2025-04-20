@@ -8,17 +8,27 @@ app.use(cors({
 }));
 const path = require('path');
 app.use('/images', express.static(path.join(__dirname, '../public/images')));
-
-//const port = 3001; // You can change this port if needed
 const port = process.env.PORT || 3001;
-
-// Middleware
 app.use(cors()); // Allows cross-origin requests (e.g., from your React frontend)
 app.use(express.json()); // Parses incoming JSON requests
 
+
+
+
+
 // Routes
-const serviceRoutes = require('./routes/serviceroute'); // Import your routes file
-app.use('/api', serviceRoutes); // All service-related routes will be handled by serviceRoutes
+const serviceRoutes = require('./routes/serviceroute'); 
+app.use('/api', serviceRoutes); 
+const contactRoutes = require('./routes/contactroute');
+app.use('/api', contactRoutes);
+
+
+
+
+
+
+
+
 
 // Default route (Optional)
 app.get('/', (req, res) => {

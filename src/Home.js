@@ -13,9 +13,41 @@ const Home = () => {
   const [showContent, setShowContent] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [services, setServices] = useState([]);
- 
   const location = useLocation();
 
+  const [nom, setNom] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [success, setSuccess] = useState('');
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const response = await fetch('https://ozendev-backend.onrender.com/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ nom, email, message }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        setSuccess("Message envoyé avec succès !");
+        setNom('');
+        setEmail('');
+        setMessage('');
+      } else {
+        setSuccess("Erreur lors de l'envoi du message.");
+      }
+    } catch (error) {
+      console.error("Erreur:", error);
+      setSuccess("Erreur serveur.");
+    }
+  };
+  
 useEffect(() => {
   const searchParams = new URLSearchParams(location.search);
   const skipIntro = searchParams.get('skipIntro');
@@ -78,8 +110,7 @@ useEffect(() => {
       </div>
     );
   }
-
-
+    
 
   return (
     <div className="main-container">
@@ -161,12 +192,33 @@ useEffect(() => {
 
         <div className="contact-container">
           <img src={contactImg} alt="Contact" className="contact-img" />
-          <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
-            <input type="text" placeholder="Votre nom" required />
-            <input type="email" placeholder="Votre email" required />
-            <textarea rows="5" placeholder="Votre message" required></textarea>
-            <button type="submit">Envoyer le message</button>
-          </form>
+<form className="contact-form" onSubmit={handleSubmit}>
+  <input
+    type="text"
+    placeholder="Votre nom"
+    value={nom}
+    onChange={(e) => setNom(e.target.value)}
+    required
+  />
+  <input
+    type="email"
+    placeholder="Votre email"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    required
+  />
+  <textarea
+    rows="5"
+    placeholder="Votre message"
+    value={message}
+    onChange={(e) => setMessage(e.target.value)}
+    required
+  ></textarea>
+  <button type="submit">Envoyer le message</button>
+  {success && <p className="success-message">{success}</p>}
+</form>
+
+
         </div>
       </section>
 
