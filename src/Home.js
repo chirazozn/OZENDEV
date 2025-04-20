@@ -14,7 +14,7 @@ const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [services, setServices] = useState([]);
   const location = useLocation();
-
+  const [messageType, setMessageType] = useState('');
   const [nom, setNom] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -25,7 +25,8 @@ const Home = () => {
   
     if (!isValidEmail(email)) {
       setSuccess("Adresse email invalide.");
-      return;
+      setMessageType("error");
+            return;
 
     }
   
@@ -42,18 +43,30 @@ const Home = () => {
   
       if (response.ok) {
         setSuccess("Message envoyé avec succès !");
-        setNom('');
+        setMessageType("success");
+                setNom('');
         setEmail('');
         setMessage('');
       } else {
         setSuccess("Erreur lors de l'envoi du message.");
-      }
+        setMessageType("error");
+              }
     } catch (error) {
       console.error("Erreur:", error);
       setSuccess("Erreur serveur.");
-    }
+      setMessageType("error");
+          }
   };
-
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        setSuccess('');
+        setMessageType('');
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [success]);
+  
 
   const isValidEmail = (email) => {
     return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);  };
@@ -228,7 +241,11 @@ useEffect(() => {
     required
   ></textarea>
   <button type="submit">Envoyer le message</button>
-  {success && <p className="success-message">{success}</p>}
+  {success && (
+  <p className={`feedback-message ${messageType === 'success' ? 'success' : 'error'}`}>
+    {success}
+  </p>
+)}
 </form>
 
 
