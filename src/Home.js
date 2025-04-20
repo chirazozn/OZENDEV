@@ -23,6 +23,12 @@ const Home = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
+    if (!isValidEmail(email)) {
+      setSuccess("Adresse email invalide.");
+      return;
+
+    }
+  
     try {
       const response = await fetch('https://ozendev-backend.onrender.com/api/contact', {
         method: 'POST',
@@ -47,6 +53,10 @@ const Home = () => {
       setSuccess("Erreur serveur.");
     }
   };
+  const isValidEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+    
   
 useEffect(() => {
   const searchParams = new URLSearchParams(location.search);
@@ -110,7 +120,9 @@ useEffect(() => {
       </div>
     );
   }
-    
+
+  
+  
 
   return (
     <div className="main-container">

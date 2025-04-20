@@ -329,6 +329,19 @@ contact  SECTION
   color: #002244;
 
 }
+.success-message {
+  margin-top: 10px;
+  color: green;
+  font-weight: bold;
+}
+
+.success-message:empty {
+  display: none;
+}
+.success-message:contains("invalide"),
+.success-message:contains("Erreur") {
+  color: red;
+}
 
 @media (max-width: 768px) {
   .contact-section h2 {
