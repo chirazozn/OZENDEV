@@ -188,6 +188,33 @@ useEffect(() => {
         </p>
       </section>
 
+
+      {/* Réalisations */}
+      <section className="realisations-section" id="realisations">
+        <h2>Nos Réalisations</h2>
+        <div className="carousel-container">
+          {[1, 2, 3, 4].map((item, index) => (
+            <motion.div
+              key={index}
+              className="carousel-card"
+              whileHover={{ scale: 1.05 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: 100 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+            >
+              <img src={require(`./assets/real${item}.jpg`)} alt={`Réalisation ${item}`} />
+              <div className="carousel-overlay">
+                <h3>Projet {item}</h3>
+                <p>Une brève description du projet {item}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        <div className="voir-plus-container">
+          <Link to="/realisations" className="voir-plus-btn">Voir plus</Link>
+        </div>
+      </section>
+
       {/* Services */}
       <section id="services" className="services-section">
         <h2>Nos Services</h2>

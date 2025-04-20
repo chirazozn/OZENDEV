@@ -169,6 +169,64 @@ ABOUT US  SECTION
     font-size: 1rem;
   }
 }
+/* ===============================
+REALISATION  SECTION
+================================= */
+.realisations-section {
+  padding: 60px 20px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.realisations-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+.carousel-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 0 20px;
+}
+
+.carousel-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.carousel-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.carousel-overlay {
+  padding: 15px;
+}
+
+.voir-plus-container {
+  margin-top: 30px;
+}
+
+.voir-plus-btn {
+  background-color: #222;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.voir-plus-btn:hover {
+  background-color: #444;
+}
 
 /* ===============================
 SERVICES SECTION
