@@ -195,7 +195,6 @@ useEffect(() => {
         <h2>Nos Services</h2>
         <div className="services-grid">
         {Array.isArray(services) && services.map((service, index) => (
-
             <motion.div
               className="service-card"
               key={index}
