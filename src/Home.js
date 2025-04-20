@@ -19,16 +19,17 @@ const Home = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [success, setSuccess] = useState('');
-  
+  const [error, setError] = useState('');
+    
   const handleSubmit = async (e) => {
     e.preventDefault();
   
     if (!isValidEmail(email)) {
-      setSuccess("Adresse email invalide.");
-      setMessageType("error");
-            return;
-
+      setError("Adresse email invalide.");
+      setSuccess('');
+      return;
     }
+    
   
     try {
       const response = await fetch('https://ozendev-backend.onrender.com/api/contact', {
@@ -58,16 +59,15 @@ const Home = () => {
           }
   };
   useEffect(() => {
-    if (success) {
+    if (success || error) {
       const timer = setTimeout(() => {
         setSuccess('');
-        setMessageType('');
+        setError('');
       }, 5000);
       return () => clearTimeout(timer);
     }
-  }, [success]);
+  }, [success, error]);
   
-
   const isValidEmail = (email) => {
     return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);  };
   
