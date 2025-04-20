@@ -189,40 +189,6 @@ useEffect(() => {
       </section>
 
 
-    
-{/* Réalisations */}
-<section id="realisations" className="realisations-section">
-  <h2>Nos Réalisations</h2>
-  <div className="carousel-container">
-    {services.map((service, index) => {
-      const realisations = service.realisation ? JSON.parse(service.realisation) : [];
-      return realisations.map((real, idx) => (
-        <motion.div
-          className="realisation-card"
-          key={`${index}-${idx}`}
-          whileInView={{ opacity: 1, scale: 1 }}
-          initial={{ opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.5 }}
-        >
-          <img
-            src={`https://ozendev-backend.onrender.com/${real.image}`}
-            alt={real.titre}
-            className="realisation-img"
-          />
-          <h3>{real.titre}</h3>
-          <p>{real.description}</p>
-        </motion.div>
-      ));
-    })}
-  </div>
-  <div className="voir-plus-container">
-    <Link to="/realisations" className="voir-plus-btn">
-      Voir plus
-    </Link>
-  </div>
-</section>
-
-
 
       {/* Services */}
       <section id="services" className="services-section">
