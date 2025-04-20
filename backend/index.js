@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 app.use(cors({
-  origin: 'ozendev-qgja-git-main-chirazs-projects-a8d77e4c.vercel.app' // remplace avec ton vrai lien Vercel
+  origin: 'https://inovadev.vercel.app' // remplace avec ton vrai lien Vercel
 }));
 const path = require('path');
 app.use('/images', express.static(path.join(__dirname, '../public/images')));
