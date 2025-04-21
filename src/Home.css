@@ -172,6 +172,43 @@ ABOUT US  SECTION
 /* ===============================
 REALISATION  SECTION
 ================================= */
+.nos-realisations {
+  padding: 40px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.realisations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.realisation-card {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.realisation-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.realisation-card h3 {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.realisation-card p {
+  color: #666;
+  font-size: 0.95rem;
+}
 
 /* ===============================
 SERVICES SECTION
