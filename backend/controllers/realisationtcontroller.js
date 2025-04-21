@@ -9,15 +9,20 @@ exports.getAllServices = (req, res) => {
 };
 
 // Get realisations of a specific service
-exports.getRealisationsByService = (req, res) => {
-  const serviceId = req.params.serviceId;
-
-  db.query('SELECT realisation FROM service WHERE id = ?', [serviceId], (err, results) => {
-    if (err) return res.status(500).json({ error: err });
-
-    if (results.length === 0) return res.status(404).json({ message: 'Service not found' });
-
-    const realisations = JSON.parse(results[0].realisation);
-    res.json(realisations);
-  });
-};
+eexports.getRealisationsByServiceId = (req, res) => {
+    const id = req.params.id;
+    const sql = 'SELECT realisation FROM service WHERE id = ?';
+    db.query(sql, [id], (err, result) => {
+      if (err) return res.status(500).json({ error: 'Database error' });
+      if (result.length === 0) return res.status(404).json({ error: 'Not found' });
+      
+      // Parse JSON safely
+      try {
+        const realisations = JSON.parse(result[0].realisation);
+        res.json(realisations);
+      } catch (e) {
+        res.status(500).json({ error: 'Invalid JSON format in DB' });
+      }
+    });
+  };
+  
