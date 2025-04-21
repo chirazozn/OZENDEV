@@ -21,8 +21,10 @@ const serviceRoutes = require('./routes/serviceroute');
 app.use('/api', serviceRoutes); 
 const contactRoutes = require('./routes/contactroute');
 app.use('/api', contactRoutes);
-const realisationRoute = require('./routes/realisationroute');
+const realisationRoute = require('./routes/realisationroute');//HOME
 app.use('/api/realisations', realisationRoute);
+const realisationTRoute = require('./routes/realisationtroute'); //voir tt DANS REALISATION PAGE 
+app.use('/api/realisation', realisationTRoute);
 
 
 

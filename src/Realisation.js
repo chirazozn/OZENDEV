@@ -1,64 +1,57 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import "./Realisation.css";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import './Realisation.css'; // tu peux le styliser ici
 
-const Realisation = () => {
+const RealisationPage = () => {
   const [services, setServices] = useState([]);
-  const [selectedServiceId, setSelectedServiceId] = useState(null);
   const [realisations, setRealisations] = useState([]);
+  const [selectedService, setSelectedService] = useState(null);
 
   useEffect(() => {
-    fetch('https://ozendev-backend.onrender.com/api/services')
-      .then(res => res.json())
-      .then(data => {
-        console.log('Services reçus :', data); // <-- ajoute ceci
-        setServices(data);
-      })
-      .catch(err => console.error('Erreur lors du chargement des services:', err));
+    axios.get('http://localhost:3001/api/realisation/services')
+      .then(res => setServices(res.data))
+      .catch(err => console.error(err));
   }, []);
 
-  // Charger les réalisations du service sélectionné
-  useEffect(() => {
-    if (selectedServiceId !== null) {
-      axios.get(`https://ozendev-backend.onrender.com/api/services/${selectedServiceId}/realisations`)
-        .then(res => setRealisations(res.data))
-        .catch(err => console.error("Erreur réalisations :", err));
-    }
-  }, [selectedServiceId]);
+  const fetchRealisations = (id) => {
+    setSelectedService(id);
+    axios.get(`http://localhost:3001/api/realisation/realisations/${id}`)
+      .then(res => setRealisations(res.data))
+      .catch(err => console.error(err));
+  };
 
   return (
-    <div className="realisation-page">
-      <div className="realisation-content">
+    <div>
+      {/* Menu identique à Home ici */}
+      <header className="menu-bar"> {/* adapte à ton style Home */}
         <h1>Nos Réalisations</h1>
+      </header>
 
-        <div className="filter-btns">
-          {services.map((service) => (
-            <button
-              key={service.id}
-              className={selectedServiceId === service.id ? "active" : ""}
-              onClick={() => setSelectedServiceId(service.id)}
-            >
-              {service.name}
-            </button>
-          ))}
-        </div>
+      {/* Boutons de services */}
+      <div className="service-buttons">
+        {services.map(service => (
+          <button
+            key={service.id}
+            className={selectedService === service.id ? 'active' : ''}
+            onClick={() => fetchRealisations(service.id)}
+          >
+            {service.name}
+          </button>
+        ))}
+      </div>
 
-        <div className="realisation-list">
-          {realisations.length === 0 ? (
-            <p>Veuillez sélectionner un service pour voir ses réalisations.</p>
-          ) : (
-            realisations.map((r, index) => (
-              <div className="realisation-card" key={index}>
-                <img src={r.image} alt={r.titre} />
-                <h3>{r.titre}</h3>
-                <p>{r.description}</p>
-              </div>
-            ))
-          )}
-        </div>
+      {/* Affichage des réalisations */}
+      <div className="realisations-grid">
+        {realisations.map((item, index) => (
+          <div key={index} className="realisation-card">
+            <img src={`/${item.image}`} alt={item.titre} />
+            <h3>{item.titre}</h3>
+            <p>{item.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default Realisation;
+export default RealisationPage;
