@@ -3,6 +3,7 @@ const db = require('../database/database.js');
 
 // Modifier le contrôleur pour transformer les données
 exports.getAllRealisations = (req, res) => {
+    console.log('API /api/realisations appelée');
     const sql = 'SELECT id, name, realisation FROM service';
   
     db.query(sql, (err, results) => {
@@ -11,24 +12,38 @@ exports.getAllRealisations = (req, res) => {
         return res.status(500).json({ error: 'Erreur serveur' });
       }
   
-      // On transforme les données dans le format attendu par le frontend
-      let allRealisations = [];
-      results.forEach(service => {
-        try {
-          const realisationsData = JSON.parse(service.realisation);
-          // On transforme chaque réalisation pour avoir le bon format
-          const transformedRealisations = realisationsData.map(item => ({
-            title: item.titre,
-            image_url: item.image,
-            description: item.description
-          }));
-          allRealisations = [...allRealisations, ...transformedRealisations];
-        } catch (e) {
-          console.error('Erreur parsing JSON:', e);
-        }
-      });
+      console.log('Résultats bruts de la BD:', results);
+      
+      try {
+        // On parse les JSON pour faciliter l'affichage côté frontend
+        const realisations = results.map(service => {
+          try {
+            const parsedRealisation = typeof service.realisation === 'string' 
+              ? JSON.parse(service.realisation) 
+              : service.realisation;
+              
+            return {
+              id: service.id,
+              name: service.name,
+              realisation: parsedRealisation
+            };
+          } catch (parseError) {
+            console.error('Erreur parsing JSON pour service id', service.id, parseError);
+            return {
+              id: service.id,
+              name: service.name,
+              realisation: [] // Valeur par défaut en cas d'erreur
+            };
+          }
+        });
   
-      res.json(allRealisations);
+        console.log('Données transformées envoyées au frontend:', realisations);
+        res.json(realisations);
+        
+      } catch (e) {
+        console.error('Erreur générale:', e);
+        res.status(500).json({ error: 'Erreur serveur lors du traitement des données' });
+      }
     });
   };
 // Obtenir les réalisations d’un service spécifique (par ID)

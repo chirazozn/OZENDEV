@@ -23,15 +23,24 @@ const Home = () => {
   const [error, setError] = useState('');
   const [realisations, setRealisations] = useState([]);
 
+
   useEffect(() => {
+    console.log('Appel API réalisations...');
     fetch('https://ozendev-backend.onrender.com/api/realisations')
-      .then(res => res.json())
+      .then(res => {
+        console.log('Statut réponse:', res.status);
+        return res.json();
+      })
       .then(data => {
+        console.log('Données reçues:', data);
         setRealisations(data);
       })
-      .catch(err => console.error('Erreur lors du chargement des réalisations:', err));
+      .catch(err => {
+        console.error('Erreur lors du chargement des réalisations:', err);
+        // Vous pourriez ajouter un état pour afficher un message d'erreur
+        // setRealisationError("Impossible de charger les réalisations. Veuillez réessayer plus tard.");
+      });
   }, []);
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -205,23 +214,32 @@ useEffect(() => {
 
       <section id="realisations" className="realisations-section">
   <h2>Nos Réalisations</h2>
+  
+  {/* Afficher un message si aucune réalisation */}
+  {(!realisations || realisations.length === 0) && (
+    <p>Aucune réalisation disponible pour le moment.</p>
+  )}
+  
   <div className="realisations-grid">
-    {Array.isArray(realisations) && realisations.map((service) => (
-      // Chaque service contient une propriété 'realisation' qui est un tableau
-      service.realisation && service.realisation.map((item, itemIndex) => (
+    {realisations && realisations.length > 0 && realisations.map((service, serviceIndex) => (
+      service.realisation && Array.isArray(service.realisation) && service.realisation.map((item, itemIndex) => (
         <motion.div
           className="realisation-card"
-          key={`${service.id}-${itemIndex}`}
+          key={`${serviceIndex}-${itemIndex}`}
           whileInView={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 50 }}
           transition={{ duration: 0.6 }}
         >
           <img
             src={`https://ozendev-backend.onrender.com/${item.image}`}
-            alt={item.titre}
+            alt={item.titre || "Réalisation"}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "/placeholder-image.jpg"; // Remplacez par une image par défaut
+            }}
           />
-          <h3>{item.titre}</h3>
-          <p>{item.description}</p>
+          <h3>{item.titre || "Sans titre"}</h3>
+          <p>{item.description || "Pas de description disponible"}</p>
         </motion.div>
       ))
     ))}
