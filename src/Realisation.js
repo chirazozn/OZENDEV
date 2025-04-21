@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "./Navbar"; // Reprend ton menu identique à Home
 import "./Realisation.css";
 
 const Realisation = () => {
@@ -26,7 +25,6 @@ const Realisation = () => {
 
   return (
     <div className="realisation-page">
-      <Navbar />
       <div className="realisation-content">
         <h1>Nos Réalisations</h1>
 
