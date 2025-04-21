@@ -7,20 +7,29 @@ exports.getAllServices = (req, res) => {
     res.json(results);
   });
 };
-
 // Get realisations of a specific service
 exports.getRealisationsByService = (req, res) => {
-    const id = req.params.serviceId; // ✅ récupère bien le paramètre "serviceId"
+    const id = req.params.serviceId;
     const sql = 'SELECT realisation FROM service WHERE id = ?';
+  
     db.query(sql, [id], (err, result) => {
       if (err) return res.status(500).json({ error: 'Database error' });
       if (result.length === 0) return res.status(404).json({ error: 'Not found' });
-      
-      // Parse JSON safely
+  
+      let realisations = result[0].realisation;
+  
+      // 🔍 Debug : afficher le type
+      console.log('Type of realisation:', typeof realisations);
+  
       try {
-        const realisations = JSON.parse(result[0].realisation);
+        // ✅ Ne parser que si c’est une string
+        if (typeof realisations === 'string') {
+          realisations = JSON.parse(realisations);
+        }
+  
         res.json(realisations);
       } catch (e) {
+        console.error('JSON parsing error:', e);
         res.status(500).json({ error: 'Invalid JSON format in DB' });
       }
     });
