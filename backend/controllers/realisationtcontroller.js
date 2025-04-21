@@ -10,7 +10,7 @@ exports.getAllServices = (req, res) => {
 
 // Get realisations of a specific service
 exports.getRealisationsByService = (req, res) => {
-    const id = req.params.id;
+    const id = req.params.serviceId;
     const sql = 'SELECT realisation FROM service WHERE id = ?';
     db.query(sql, [id], (err, result) => {
       if (err) return res.status(500).json({ error: 'Database error' });
