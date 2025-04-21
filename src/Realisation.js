@@ -15,7 +15,7 @@ const RealisationPage = () => {
 
   const fetchRealisations = (id) => {
     setSelectedService(id);
-    axios.get(`https://ozendev-backend.onrender.com/api/realisation/realisations/${id}`)
+    axios.get(`https://ozendev-backend.onrender.com/api/realisation/services/${id}`)
       .then(res => setRealisations(res.data))
       .catch(err => console.error(err));
   };
