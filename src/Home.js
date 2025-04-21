@@ -8,12 +8,14 @@ import { Link } from 'react-router-dom'; // Importer Link pour le routage
 import { useLocation } from 'react-router-dom';
 import hamburgerIcon from './assets/hamburger-icon.png';
 import contactImg from './assets/contact.jpg';
+import { useNavigate } from "react-router-dom";
 
 
 const Home = () => {
   const [showContent, setShowContent] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [services, setServices] = useState([]);
+  const navigate = useNavigate();
   const location = useLocation();
   const [messageType, setMessageType] = useState('');
   const [nom, setNom] = useState('');
@@ -214,7 +216,9 @@ useEffect(() => {
 
       <section id="realisations" className="nos-realisations">
   <h2>Nos Réalisations</h2>
-
+  <button className="voir-tout-btn" onClick={() => navigate("/Realisation")}>
+          Voir tout
+        </button>
   {/* Afficher un message si aucune réalisation */}
   {(!realisations || realisations.length === 0) && (
     <p>Aucune réalisation disponible pour le moment.</p>
