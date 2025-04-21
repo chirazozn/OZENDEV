@@ -9,7 +9,7 @@ exports.getAllServices = (req, res) => {
 };
 
 // Get realisations of a specific service
-exports.getRealisationsByServiceId = (req, res) => {
+exports.getRealisationsByService = (req, res) => {
     const id = req.params.id;
     const sql = 'SELECT realisation FROM service WHERE id = ?';
     db.query(sql, [id], (err, result) => {
