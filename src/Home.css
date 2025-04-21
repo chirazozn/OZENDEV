@@ -191,20 +191,12 @@ REALISATION  SECTION
   position: relative;
 }
 
-.nos-realisations h2::after {
-  content: '';
-  width: 80px;
-  height: 4px;
-  background-color: #FFD700; /* Dark red underline */
-  display: block;
-  margin: 10px auto 0;
-  border-radius: 2px;
-}
+
 
 
 .voir-tout-btn {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #002244;
+  color:  #FFD700;
   padding: 8px 14px;
   border: none;
   border-radius: 6px;
@@ -213,7 +205,9 @@ REALISATION  SECTION
 }
 
 .voir-tout-btn:hover {
-  background-color: #002244;
+  background-color: #FFD700;
+  color:  #002244;
+
 }
 
 .carousel {
