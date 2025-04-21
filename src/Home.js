@@ -215,33 +215,34 @@ useEffect(() => {
 
 
       <section id="realisations" className="nos-realisations">
-  <h2>Nos Réalisations</h2>
-  <button className="voir-tout-btn" onClick={() => navigate("/Realisation")}>
+      <div className="header">
+        <h2>Nos Réalisations</h2>
+        <button className="voir-tout-btn" onClick={() => navigate("/Realisation")}>
           Voir tout
         </button>
-  {/* Afficher un message si aucune réalisation */}
-  {(!realisations || realisations.length === 0) && (
-    <p>Aucune réalisation disponible pour le moment.</p>
-  )}
-
-  {/* Afficher les réalisations */}
-  <div className="realisations-grid">
-    {realisations && realisations.length > 0 && realisations.map((item, index) => (
-      <div key={index} className="realisation-card">
-        <img
-          src={item.image_url}
-          alt={item.title || "Image réalisation"}
-          onError={(e) => {
-            e.target.onerror = null;
-            e.target.src = "/placeholder-image.jpg"; // image par défaut
-          }}
-        />
-        <h3>{item.title || "Sans titre"}</h3>
-        <p>{item.description || "Pas de description disponible"}</p>
       </div>
-    ))}
-  </div>
-</section>
+
+      {(!realisations || realisations.length === 0) ? (
+        <p>Aucune réalisation disponible pour le moment.</p>
+      ) : (
+        <div className="carousel">
+          {realisations.map((item, index) => (
+            <div key={index} className="carousel-item">
+              <img
+                src={item.image_url}
+                alt={item.title || "Image réalisation"}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "/placeholder-image.jpg";
+                }}
+              />
+              <h3>{item.title || "Sans titre"}</h3>
+              <p>{item.description || "Pas de description"}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
 
 
 
