@@ -21,7 +21,17 @@ const Home = () => {
   const [message, setMessage] = useState('');
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
-    
+  const [realisations, setRealisations] = useState([]);
+
+  useEffect(() => {
+    fetch('https://ozendev-backend.onrender.com/api/realisations')
+      .then(res => res.json())
+      .then(data => {
+        setRealisations(data);
+      })
+      .catch(err => console.error('Erreur lors du chargement des réalisations:', err));
+  }, []);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -155,9 +165,11 @@ useEffect(() => {
         <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
           <li><a href="#home">Accueil</a></li>
           <li><a href="#about">À propos</a></li>
+          <li><a href="#realisations">Réalisations</a></li>
           <li><a href="#services">Nos Services</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="#location">Localisation</a></li>
+
         </ul>
       </nav>
 
@@ -187,6 +199,33 @@ useEffect(() => {
           Construisons ensemble votre avenir digital.
         </p>
       </section>
+
+
+
+
+
+
+      <section id="realisations" className="realisations-section">
+  <h2>Nos Réalisations</h2>
+  <div className="realisations-grid">
+    {Array.isArray(realisations) && realisations.map((realisation, index) => (
+      <motion.div
+        className="realisation-card"
+        key={index}
+        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 50 }}
+        transition={{ duration: 0.6 }}
+      >
+        <img
+          src={`https://ozendev-backend.onrender.com/${realisation.image_url}`}
+          alt={realisation.title}
+        />
+        <h3>{realisation.title}</h3>
+        <p>{realisation.description}</p>
+      </motion.div>
+    ))}
+  </div>
+</section>
 
 
 
