@@ -8,14 +8,14 @@ const RealisationPage = () => {
   const [selectedService, setSelectedService] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api/realisation/services')
+    axios.get('https://ozendev-backend.onrender.com/api/realisation/services')
       .then(res => setServices(res.data))
       .catch(err => console.error(err));
   }, []);
 
   const fetchRealisations = (id) => {
     setSelectedService(id);
-    axios.get(`http://localhost:3001/api/realisation/realisations/${id}`)
+    axios.get(`https://ozendev-backend.onrender.com/api/realisation/realisations/${id}`)
       .then(res => setRealisations(res.data))
       .catch(err => console.error(err));
   };
