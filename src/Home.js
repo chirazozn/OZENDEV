@@ -203,30 +203,30 @@ useEffect(() => {
 
 
 
-
-
       <section id="realisations" className="realisations-section">
   <h2>Nos Réalisations</h2>
   <div className="realisations-grid">
-    {Array.isArray(realisations) && realisations.map((realisation, index) => (
-      <motion.div
-        className="realisation-card"
-        key={index}
-        whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: 50 }}
-        transition={{ duration: 0.6 }}
-      >
-        <img
-          src={`https://ozendev-backend.onrender.com/${realisation.image_url}`}
-          alt={realisation.title}
-        />
-        <h3>{realisation.title}</h3>
-        <p>{realisation.description}</p>
-      </motion.div>
+    {Array.isArray(realisations) && realisations.map((service) => (
+      // Chaque service contient une propriété 'realisation' qui est un tableau
+      service.realisation && service.realisation.map((item, itemIndex) => (
+        <motion.div
+          className="realisation-card"
+          key={`${service.id}-${itemIndex}`}
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          transition={{ duration: 0.6 }}
+        >
+          <img
+            src={`https://ozendev-backend.onrender.com/${item.image}`}
+            alt={item.titre}
+          />
+          <h3>{item.titre}</h3>
+          <p>{item.description}</p>
+        </motion.div>
+      ))
     ))}
   </div>
 </section>
-
 
 
       {/* Services */}

@@ -1,27 +1,36 @@
 // backend/controllers/realisationcontroller.js
 const db = require('../database/database.js');
 
-// Obtenir toutes les réalisations (de tous les services)
+// Modifier le contrôleur pour transformer les données
 exports.getAllRealisations = (req, res) => {
-  const sql = 'SELECT id, name, realisation FROM service';
-
-  db.query(sql, (err, results) => {
-    if (err) {
-      console.error('Erreur récupération des réalisations :', err);
-      return res.status(500).json({ error: 'Erreur serveur' });
-    }
-
-    // On parse les JSON pour faciliter l'affichage côté frontend
-    const realisations = results.map(service => ({
-      id: service.id,
-      name: service.name,
-      realisation: JSON.parse(service.realisation)
-    }));
-
-    res.json(realisations);
-  });
-};
-
+    const sql = 'SELECT id, name, realisation FROM service';
+  
+    db.query(sql, (err, results) => {
+      if (err) {
+        console.error('Erreur récupération des réalisations :', err);
+        return res.status(500).json({ error: 'Erreur serveur' });
+      }
+  
+      // On transforme les données dans le format attendu par le frontend
+      let allRealisations = [];
+      results.forEach(service => {
+        try {
+          const realisationsData = JSON.parse(service.realisation);
+          // On transforme chaque réalisation pour avoir le bon format
+          const transformedRealisations = realisationsData.map(item => ({
+            title: item.titre,
+            image_url: item.image,
+            description: item.description
+          }));
+          allRealisations = [...allRealisations, ...transformedRealisations];
+        } catch (e) {
+          console.error('Erreur parsing JSON:', e);
+        }
+      });
+  
+      res.json(allRealisations);
+    });
+  };
 // Obtenir les réalisations d’un service spécifique (par ID)
 exports.getRealisationsByServiceId = (req, res) => {
   const serviceId = req.params.id;
