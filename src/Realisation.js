@@ -10,7 +10,7 @@ const Realisation = () => {
 
   // Charger tous les services au démarrage
   useEffect(() => {
-    axios.get("http://localhost:3001/api/services")
+    axios.get("https://ozendev-backend.onrender.com/api/services")
       .then(res => setServices(res.data))
       .catch(err => console.error("Erreur services :", err));
   }, []);
@@ -18,7 +18,7 @@ const Realisation = () => {
   // Charger les réalisations du service sélectionné
   useEffect(() => {
     if (selectedServiceId !== null) {
-      axios.get(`http://localhost:3001/api/services/${selectedServiceId}/realisations`)
+      axios.get(`https://ozendev-backend.onrender.com/api/services/${selectedServiceId}/realisations`)
         .then(res => setRealisations(res.data))
         .catch(err => console.error("Erreur réalisations :", err));
     }
