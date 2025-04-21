@@ -7,11 +7,14 @@ const Realisation = () => {
   const [selectedServiceId, setSelectedServiceId] = useState(null);
   const [realisations, setRealisations] = useState([]);
 
-  // Charger tous les services au démarrage
   useEffect(() => {
-    axios.get("https://ozendev-backend.onrender.com/api/services")
-      .then(res => setServices(res.data))
-      .catch(err => console.error("Erreur services :", err));
+    fetch('https://ozendev-backend.onrender.com/api/services')
+      .then(res => res.json())
+      .then(data => {
+        console.log('Services reçus :', data); // <-- ajoute ceci
+        setServices(data);
+      })
+      .catch(err => console.error('Erreur lors du chargement des services:', err));
   }, []);
 
   // Charger les réalisations du service sélectionné
