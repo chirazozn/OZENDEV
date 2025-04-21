@@ -15,9 +15,25 @@ const RealisationPage = () => {
 
   const fetchRealisations = (id) => {
     setSelectedService(id);
-    axios.get(`https://ozendev-backend.onrender.com/api/realisation/services/${id}`)
-      .then(res => setRealisations(res.data))
-      .catch(err => console.error(err));
+    fetch(`https://ozendev-backend.onrender.com/api/realisation/services/${id}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+        if (Array.isArray(data.realisation)) {
+          setRealisations(data.realisation);
+        } else if (Array.isArray(data)) {
+          setRealisations(data); // Si le backend retourne directement le tableau
+        } else {
+          console.error('Unexpected data format:', data);
+          setRealisations([]);
+        }
+      })
+      
+  
   };
 
   return (
