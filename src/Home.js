@@ -212,39 +212,33 @@ useEffect(() => {
 
 
 
-      <section id="realisations" className="realisations-section">
+      <section id="realisations" className="nos-realisations">
   <h2>Nos Réalisations</h2>
-  
+
   {/* Afficher un message si aucune réalisation */}
   {(!realisations || realisations.length === 0) && (
     <p>Aucune réalisation disponible pour le moment.</p>
   )}
-  
+
+  {/* Afficher les réalisations */}
   <div className="realisations-grid">
-    {realisations && realisations.length > 0 && realisations.map((service, serviceIndex) => (
-      service.realisation && Array.isArray(service.realisation) && service.realisation.map((item, itemIndex) => (
-        <motion.div
-          className="realisation-card"
-          key={`${serviceIndex}-${itemIndex}`}
-          whileInView={{ opacity: 1, y: 0 }}
-          initial={{ opacity: 0, y: 50 }}
-          transition={{ duration: 0.6 }}
-        >
-          <img
-            src={`https://ozendev-backend.onrender.com/${item.image}`}
-            alt={item.titre || "Réalisation"}
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = "/placeholder-image.jpg"; // Remplacez par une image par défaut
-            }}
-          />
-          <h3>{item.titre || "Sans titre"}</h3>
-          <p>{item.description || "Pas de description disponible"}</p>
-        </motion.div>
-      ))
+    {realisations && realisations.length > 0 && realisations.map((item, index) => (
+      <div key={index} className="realisation-card">
+        <img
+          src={item.image_url}
+          alt={item.title || "Image réalisation"}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = "/placeholder-image.jpg"; // image par défaut
+          }}
+        />
+        <h3>{item.title || "Sans titre"}</h3>
+        <p>{item.description || "Pas de description disponible"}</p>
+      </div>
     ))}
   </div>
 </section>
+
 
 
       {/* Services */}
