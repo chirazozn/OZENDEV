@@ -173,7 +173,7 @@ ABOUT US  SECTION
 REALISATION  SECTION
 ================================= */
 .nos-realisations {
-  padding: 40px;
+  padding: 60px 20px;
   background-color: #fff;
 }
 
@@ -183,10 +183,24 @@ REALISATION  SECTION
   align-items: center;
 }
 
+
 .nos-realisations h2 {
-  font-size: 24px;
+  font-size: 2.5rem;
+  color: #002244;
   margin-bottom: 10px;
+  position: relative;
 }
+
+.nos-realisations h2::after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background-color: #FFD700; /* Dark red underline */
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
 
 .voir-tout-btn {
   background-color: #007bff;
@@ -199,7 +213,7 @@ REALISATION  SECTION
 }
 
 .voir-tout-btn:hover {
-  background-color: #0056b3;
+  background-color: #002244;
 }
 
 .carousel {
