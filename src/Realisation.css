@@ -11,6 +11,8 @@ NAVBAR
     align-items: center;
     padding: 1rem 2rem;
     z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
   }
   
   .logo {
@@ -24,6 +26,11 @@ NAVBAR
     line-height: 1.5; /* Adjust line height if necessary */
     margin-right: 40px; /* Optional: adjust margin as needed */
   }
+  .titre {
+    margin-top: 120px; /* pour compenser la navbar fixe */
+    text-align: center;
+  }
+  
   .titre h1 {
     font-size: 2.5rem;
     color: #002244;
