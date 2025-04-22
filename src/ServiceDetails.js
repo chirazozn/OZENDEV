@@ -36,7 +36,7 @@ const ServiceDetails = () => {
       
  
       const handleVoirToutClick = () => {
-        navigate(`/realisations/services/${service.id}`); // Navigate to the RealisationPage with the service ID
+        navigate(`/realisation/services/${service.id}`); // Navigate to the RealisationPage with the service ID
       };
     
 
