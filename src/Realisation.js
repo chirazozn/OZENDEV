@@ -44,29 +44,12 @@ const RealisationPage = () => {
         {/* Menu */}
         <nav className="navbar">
         <img src={logo} alt="Logo" className="logo" />
-         
-         
-           {/* Menu
-        <div className="hamburger" onClick={toggleMenu}>
-          {!menuOpen ? (
-            <img src={hamburgerIcon} alt="Menu" className="hamburger-img" />
-          ) : (
-            <div className="close-btn">✕</div>
-          )}
-        </div> 
-        <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
-  <li><a href="/?skipIntro=true#home">Retour</a></li>
-  <li><a href="/?skipIntro=true#contact">Contact</a></li>
-  <li><a href="/?skipIntro=true#location">Localisation</a></li>
-</ul>*/}
-
 <li className="nav-link"><a href="/?skipIntro=true#home">Retour</a></li>
- 
-
       </nav>
-      <header className='titre'> {/* adapte à ton style Home */}
-        <h1>Nos Réalisations</h1>
-      </header>
+
+
+        <h1  className='titre'>Nos Réalisations</h1>
+   
 
       {/* Boutons de services */}
       <div className="service-buttons">
