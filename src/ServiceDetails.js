@@ -114,10 +114,13 @@ const ServiceDetails = () => {
   >
     {service.realisation.map((item, index) => (
       <SwiperSlide key={index}>
+          <div className="realisation-item-wrapper">
+
         <div className="realisation-item">
           <img src={`https://ozendev-backend.onrender.com/${item.image}`} alt={item.titre} />
           <h3>{item.titre}</h3>
           <p>{item.description}</p>
+        </div>
         </div>
       </SwiperSlide>
     ))}
