@@ -47,8 +47,8 @@ const RealisationPage = () => {
 <li className="nav-link"><a href="/?skipIntro=true#home">Retour</a></li>
       </nav>
 
-
-        <h1  className='titre'>Nos Réalisations</h1>
+<div   className='titre'>         <h1>Nos Réalisations</h1>
+</div>
    
 
       {/* Boutons de services */}

@@ -31,7 +31,7 @@ NAVBAR
     position: relative;
   }
   
-  .titre h2::after {
+  .titre h1::after {
     content: '';
     width: 80px;
     height: 4px;
