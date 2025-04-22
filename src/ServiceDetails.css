@@ -226,12 +226,12 @@ REALISATION
   }
   
 .voir-tout-btn {
+  margin-top: 20px;
   background-color: #002244;
   color:  #ffffb7;
   padding: 8px 14px;
   border: none;
   border-radius: 6px;
-  margin-top: 20px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
