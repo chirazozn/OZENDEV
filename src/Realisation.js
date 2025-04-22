@@ -2,40 +2,60 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Realisation.css'; // tu peux le styliser ici
 import logo from './assets/logo.png';
+import { useParams } from 'react-router-dom';
 
 const RealisationPage = () => {
   const [services, setServices] = useState([]);
   const [realisations, setRealisations] = useState([]);
   const [selectedService, setSelectedService] = useState(null);
+  const { id } = useParams(); // Get the service ID from the URL
 
   useEffect(() => {
     axios.get('https://ozendev-backend.onrender.com/api/realisation/services')
       .then(res => setServices(res.data))
       .catch(err => console.error(err));
   }, []);
-
   const fetchRealisations = (id) => {
-    setSelectedService(id);
+    setSelectedService(id); // update active button style
     fetch(`https://ozendev-backend.onrender.com/api/realisation/services/${id}`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
         if (Array.isArray(data.realisation)) {
           setRealisations(data.realisation);
         } else if (Array.isArray(data)) {
-          setRealisations(data); // Si le backend retourne directement le tableau
+          setRealisations(data); // fallback in case backend returns array directly
         } else {
           console.error('Unexpected data format:', data);
           setRealisations([]);
         }
       })
-      
-  
+      .catch((err) => console.error('Error fetching realisations:', err));
   };
+  
+  useEffect(() => {
+    // Fetch realisations based on the service ID from the URL
+    fetch(`https://ozendev-backend.onrender.com/api/realisation/services/${id}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (Array.isArray(data.realisation)) {
+          setRealisations(data.realisation);
+        } else {
+          console.error('Unexpected data format:', data);
+          setRealisations([]);
+        }
+      })
+      .catch((err) => console.error('Error fetching realisations:', err));
+  }, [id]); // Re-run the effect when the service ID changes
 
   return (
     
