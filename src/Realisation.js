@@ -8,7 +8,7 @@ const RealisationPage = () => {
   const [services, setServices] = useState([]);
   const [realisations, setRealisations] = useState([]);
   const [selectedService, setSelectedService] = useState(null);
-  const { id } = useParams(); // Get the service ID from the URL
+  const { idd } = useParams(); // Get the service ID from the URL
 
   useEffect(() => {
     axios.get('https://ozendev-backend.onrender.com/api/realisation/services')
@@ -39,7 +39,7 @@ const RealisationPage = () => {
   
   useEffect(() => {
     // Fetch realisations based on the service ID from the URL
-    fetch(`https://ozendev-backend.onrender.com/api/realisation/services/${id}`)
+    fetch(`https://ozendev-backend.onrender.com/api/realisation/services/${idd}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -55,7 +55,7 @@ const RealisationPage = () => {
         }
       })
       .catch((err) => console.error('Error fetching realisations:', err));
-  }, [id]); // Re-run the effect when the service ID changes
+  }, [idd]); // Re-run the effect when the service ID changes
 
   return (
     
