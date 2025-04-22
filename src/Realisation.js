@@ -38,25 +38,12 @@ const RealisationPage = () => {
   };
   
   useEffect(() => {
-    // Fetch realisations based on the service ID from the URL
-    fetch(`https://ozendev-backend.onrender.com/api/realisation/services/${idd}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (Array.isArray(data.realisation)) {
-          setRealisations(data.realisation);
-        } else {
-          console.error('Unexpected data format:', data);
-          setRealisations([]);
-        }
-      })
-      .catch((err) => console.error('Error fetching realisations:', err));
-  }, [idd]); // Re-run the effect when the service ID changes
-
+    if (idd) {
+      fetchRealisations(idd);
+      setSelectedService(Number(idd)); // pour que le bon bouton soit activé aussi
+    }
+  }, [idd]);
+  
   return (
     
     <div>
