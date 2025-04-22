@@ -38,28 +38,46 @@ const ServiceDetails = () => {
       const handleVoirToutClick = () => {
         navigate(`/realisation/services/${service.id}`); // Navigate to the RealisationPage with the service ID
       };
+  
+
+
+
+
+
+
+
       useEffect(() => {
-        const equalizeHeights = () => {
+        // Run only when the DOM is ready and service is loaded
+        if (!service) return;
+      
+        const updateHeights = () => {
           const items = document.querySelectorAll('.realisation-item');
           let maxHeight = 0;
       
-          // Reset height before calculating
+          // Reset any previous height
           items.forEach(item => {
             item.style.height = 'auto';
-            maxHeight = Math.max(maxHeight, item.offsetHeight);
           });
       
+          // Find the tallest
+          items.forEach(item => {
+            const height = item.offsetHeight;
+            if (height > maxHeight) maxHeight = height;
+          });
+      
+          // Apply max height to all
           items.forEach(item => {
             item.style.height = `${maxHeight}px`;
           });
         };
       
-        // Run after slight delay (wait for Swiper to render content)
-        setTimeout(equalizeHeights, 500);
-        window.addEventListener('resize', equalizeHeights);
+        updateHeights();
       
-        return () => window.removeEventListener('resize', equalizeHeights);
-      }, []);
+        // Re-run on window resize
+        window.addEventListener('resize', updateHeights);
+        return () => window.removeEventListener('resize', updateHeights);
+      }, [service]);
+      
       
 
   if (!service) {
