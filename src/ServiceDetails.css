@@ -162,10 +162,13 @@ REALISATION
 }
 
 .realisation-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
+  width: 100%;          /* Ensures the image takes up 100% of the container width */
+  height: 100%;         /* Ensures the image takes up 100% of the container height */
+  object-fit: cover;    /* Ensures the image covers the container while maintaining aspect ratio */
+  object-position: center; /* Centers the image inside the container */
+  border-radius: 10px;  /* Keeps the rounded corners */
 }
+
 
 .realisation-item h3 {
   margin-top: 1rem;
