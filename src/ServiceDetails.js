@@ -38,7 +38,29 @@ const ServiceDetails = () => {
       const handleVoirToutClick = () => {
         navigate(`/realisation/services/${service.id}`); // Navigate to the RealisationPage with the service ID
       };
-    
+      useEffect(() => {
+        const equalizeHeights = () => {
+          const items = document.querySelectorAll('.realisation-item');
+          let maxHeight = 0;
+      
+          // Reset height before calculating
+          items.forEach(item => {
+            item.style.height = 'auto';
+            maxHeight = Math.max(maxHeight, item.offsetHeight);
+          });
+      
+          items.forEach(item => {
+            item.style.height = `${maxHeight}px`;
+          });
+        };
+      
+        // Run after slight delay (wait for Swiper to render content)
+        setTimeout(equalizeHeights, 500);
+        window.addEventListener('resize', equalizeHeights);
+      
+        return () => window.removeEventListener('resize', equalizeHeights);
+      }, []);
+      
 
   if (!service) {
     return <div>Loading...</div>;

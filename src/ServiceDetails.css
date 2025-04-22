@@ -153,16 +153,16 @@ REALISATION
     background-color: #f8f8f8; /* Light background for contrast */
     text-align: center;
   }
-/* Make all slide items flex to match height */
-.swiper-wrapper {
-  display: flex;
-  align-items: stretch; /* Forces all items to take same height */
-}
-/* Pour que chaque slide adopte la hauteur du plus grand contenu */
-.swiper-slide {
-  display: flex;
-  height: auto; /* ou height: 100% si nécessaire */
-}
+  .swiper-wrapper {
+    display: flex;
+    align-items: stretch; /* étire tous les enfants à la même hauteur */
+  }
+  
+  .swiper-slide {
+    display: flex;
+    height: auto;
+  }
+  
 
 .realisation-item-wrapper {
   display: flex;
@@ -170,7 +170,7 @@ REALISATION
 }
 
 .realisation-item {
-  background: white;
+  background: #f2f2f2;
   border-radius: 10px;
   padding: 1rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
