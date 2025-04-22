@@ -163,7 +163,7 @@ REALISATION
 
 .realisation-item img {
   width: 100%;          /* Ensures the image takes up 100% of the container width */
-  height: 100%;         /* Ensures the image takes up 100% of the container height */
+  height: 400px;         /* Ensures the image takes up 100% of the container height */
   object-fit: cover;    /* Ensures the image covers the container while maintaining aspect ratio */
   object-position: center; /* Centers the image inside the container */
   border-radius: 10px;  /* Keeps the rounded corners */
