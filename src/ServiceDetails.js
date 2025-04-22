@@ -125,7 +125,7 @@ const ServiceDetails = () => {
       </SwiperSlide>
     ))}
   </Swiper>
-  <button className="voir-tout-button" onClick={handleVoirToutClick}>
+  <button className="voir-tout-btn" onClick={handleVoirToutClick}>
           Voir tout
         </button>
 </section>
