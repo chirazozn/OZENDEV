@@ -1,10 +1,47 @@
-.menu-bar {
-    background-color: black;
-    color: white;
-    padding: 20px;
-    text-align: center;
+/* ===============================
+NAVBAR
+================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #002244;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 100;
   }
   
+  .logo {
+    height: 60px;
+  
+  }
+    /* RETOUR */
+.nav-link a {
+    color: #ffffb7; /* Light yellowish color */
+    text-decoration: none; /* Remove the underline */
+    font-weight: bold;
+    line-height: 1.5; /* Adjust line height if necessary */
+    margin-right: 40px; /* Optional: adjust margin as needed */
+  }
+  .titre h1 {
+    font-size: 2.5rem;
+    color: #002244;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  .titre h2::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background-color: #FFD700; /* Dark red underline */
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 2px;
+  }
+
   .service-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -14,8 +51,8 @@
   }
   
   .service-buttons button {
-    background-color: darkred;
-    color: white;
+    background-color: #002244;
+    color: #ffffb7;
     padding: 10px 15px;
     border: none;
     cursor: pointer;
@@ -23,7 +60,7 @@
   }
   
   .service-buttons .active {
-    background-color: black;
+    background-color: #0022447e;
   }
   
   .realisations-grid {

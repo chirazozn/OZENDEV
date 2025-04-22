@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { FaFacebook, FaInstagram, FaLinkedin, FaMapMarkerAlt } from 'react-icons/fa';
 import './ServiceDetails.css';
 import { useParams } from 'react-router-dom';
-import hamburgerIcon from './assets/hamburger-icon.png';
 import logo from './assets/logo.png';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';

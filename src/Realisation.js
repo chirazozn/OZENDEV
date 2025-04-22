@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Realisation.css'; // tu peux le styliser ici
+import logo from './assets/logo.png';
 
 const RealisationPage = () => {
   const [services, setServices] = useState([]);
@@ -37,9 +38,33 @@ const RealisationPage = () => {
   };
 
   return (
+    
     <div>
-      {/* Menu identique à Home ici */}
-      <header className="menu-bar"> {/* adapte à ton style Home */}
+
+        {/* Menu */}
+        <nav className="navbar">
+        <img src={logo} alt="Logo" className="logo" />
+         
+         
+           {/* Menu
+        <div className="hamburger" onClick={toggleMenu}>
+          {!menuOpen ? (
+            <img src={hamburgerIcon} alt="Menu" className="hamburger-img" />
+          ) : (
+            <div className="close-btn">✕</div>
+          )}
+        </div> 
+        <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
+  <li><a href="/?skipIntro=true#home">Retour</a></li>
+  <li><a href="/?skipIntro=true#contact">Contact</a></li>
+  <li><a href="/?skipIntro=true#location">Localisation</a></li>
+</ul>*/}
+
+<li className="nav-link"><a href="/?skipIntro=true#home">Retour</a></li>
+ 
+
+      </nav>
+      <header className='titre'> {/* adapte à ton style Home */}
         <h1>Nos Réalisations</h1>
       </header>
 

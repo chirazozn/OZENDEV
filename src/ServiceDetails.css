@@ -35,11 +35,7 @@ NAVBAR
   }
   
   
-  /* HAMBURGER IMAGE default hidden */
-  .hamburger-img {
-    display: none;
-  }
-    /* RETOUR*/
+
   /* RETOUR */
 .nav-link a {
   color: #ffffb7; /* Light yellowish color */
