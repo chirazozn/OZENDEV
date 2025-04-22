@@ -86,7 +86,7 @@ NAVBAR
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 320px;
+    height: 400px;
     box-sizing: border-box;
   }
   
@@ -94,7 +94,7 @@ NAVBAR
 .realisation-card img {
     width: 100%;
     height: 180px;
-    object-fit: cover;
+    object-fit:fill;
     border-radius: 6px;
 }
 
