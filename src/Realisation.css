@@ -68,7 +68,6 @@ NAVBAR
   .service-buttons .active {
     background-color: #0022447e;
   }
-  
   .realisations-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -76,9 +75,12 @@ NAVBAR
     padding: 0 30px 30px;
   }
   
- 
-
-  .realisation-card {
+  @media (min-width: 1200px) {
+    .realisations-grid {
+      grid-template-columns: repeat(4, 1fr); /* Limit to 4 columns on large screens */
+    }
+  }
+   .realisation-card {
     border: 1px solid #ccc;
     padding: 15px;
     border-radius: 10px;
@@ -89,6 +91,10 @@ NAVBAR
     justify-content: space-between;
     height: 320px; /* Fix height for consistency */
     box-sizing: border-box;
+
+
+
+   
 }
 
 .realisation-card img {
