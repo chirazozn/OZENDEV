@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaFacebook, FaInstagram, FaLinkedin, FaMapMarkerAlt } from 'react-icons/fa';
 import './ServiceDetails.css';
-import { useParams } from 'react-router-dom';
+import { useParams ,useNavigate} from 'react-router-dom';
 import logo from './assets/logo.png';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -14,6 +14,7 @@ const ServiceDetails = () => {
   const { id } = useParams(); // Get the service ID from URL parameters
   const [service, setService] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
   const toggleMenu = () => {
       setMenuOpen(!menuOpen);
     };
@@ -34,6 +35,9 @@ const ServiceDetails = () => {
       }, [id]);
       
  
+      const handleVoirToutClick = () => {
+        navigate(`/realisations/${id}`); // Redirect to RealisationPage with service ID
+      };
 
   if (!service) {
     return <div>Loading...</div>;
@@ -117,6 +121,9 @@ const ServiceDetails = () => {
       </SwiperSlide>
     ))}
   </Swiper>
+  <button className="voir-tout-button" onClick={handleVoirToutClick}>
+          Voir tout
+        </button>
 </section>
 
        {/* Realisation Section 
