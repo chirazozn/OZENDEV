@@ -125,9 +125,17 @@ const ServiceDetails = () => {
       </SwiperSlide>
     ))}
   </Swiper>
-  <link className="voir-tout-btn" onClick={handleVoirToutClick}>
-          Voir tout
-        </link>
+  <a
+  href="#"
+  className="voir-tout-btn"
+  onClick={(e) => {
+    e.preventDefault(); // empêche le scroll en haut
+    handleVoirToutClick(); // déclenche la navigation
+  }}
+>
+  Voir tout
+</a>
+
 </section>
 
        {/* Realisation Section 
