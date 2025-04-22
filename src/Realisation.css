@@ -98,11 +98,3 @@ NAVBAR
     border-radius: 6px;
 }
 
-  @media (min-width:  769px) {
-    .realisations-grid { 
-        display: flex !important;
-        flex-wrap: wrap;
-        gap: 2rem;
-   
-    }
-    }
