@@ -177,6 +177,7 @@ REALISATION
   display: flex;
   flex-direction: column;
   flex: 1;
+  margin-bottom: 20px;
 }
  
 
@@ -226,7 +227,6 @@ REALISATION
   }
   
 .voir-tout-btn {
-  margin-top: 20px;
   background-color: #002244;
   color:  #ffffb7;
   padding: 8px 14px;
