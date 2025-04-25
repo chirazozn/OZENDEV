@@ -629,8 +629,58 @@ height: 60PX;
   .footer .contact-info {
       margin-top: 1rem;
   }
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-color: #002244;
+    padding: 2rem;
+    gap: 2rem;
+    z-index: 200;
+    overflow-y: auto;
+  }
 
+  .nav-links li a {
+    font-size: 1.2rem;
+    padding: 10px;
+    color: #ffffb7;
+    border-bottom: 1px solid #FFD700;
+  }
 
+  .mobile-extra-info {
+    margin-top: auto;
+    border-top: 1px solid #FFD700;
+    padding-top: 1rem;
+    color: #ffffb7;
+    text-align: center;
+  }
+
+  .contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .contact-icons a {
+    color: #FFD700;
+    transition: transform 0.2s;
+  }
+
+  .contact-icons a:hover {
+    transform: scale(1.2);
+  }
+
+  .mobile-location,
+  .mobile-phone {
+    font-size: 1rem;
+    margin-top: 5px;
+  }
 
 .hamburger-img {
   display: flex;
@@ -652,29 +702,7 @@ height: 60PX;
       transition: transform 0.3s ease;
     }
    
-    .nav-links {
-      display: none;
-     
-      flex-direction: column;
-      background-color: #002244;
-      position: absolute;
-      border: 2px solid #ffffb7;
-      border-radius: 10px;
-      padding: 1rem;
-      z-index: 999;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    
-    .nav-links.active {
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(10px);
-      display: flex;
-      top: 45px; /* Push below navbar */
-      right: 25px;
-      width: 100px;
-      animation: slideIn 0.4s ease forwards;
-    }
-  
+
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -685,6 +713,8 @@ height: 60PX;
     transform: translateX(0);
   }}
 }
+
+
 
 
 @media (min-width: 500px) and (max-width: 768px) {
