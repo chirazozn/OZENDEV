@@ -644,7 +644,7 @@ height: 60PX;
 .contact-menuicons {
   display: flex;
   justify-content: space-around;
-  right: 100px;
+  right: 130px;
   align-items: center;
   position: absolute;
 }
@@ -652,8 +652,8 @@ height: 60PX;
 .icon-menucontact,
 .icon-menu-contact {
   color: #ffffb7;
+  width: 60px;
   font-size: 20px;
-  margin: 10px;
   transition: color 0.3s ease;
 }
 
