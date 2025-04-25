@@ -82,7 +82,18 @@ NAVBAR
   font-weight: bold;
 }
 
-
+/* Mobile Nav Toggle (JS toggles `active`) */
+.nav-links.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  background: #002244;
+  padding: 1rem 2rem;
+  gap: 1rem;
+}
 
 /* ===============================
 HERO SECTION
@@ -578,7 +589,7 @@ MEDIA QUERIES
 
 
 
-@media (max-width:788px) {
+@media (max-width:768px) {
 
 .logo {
 height: 60PX;
