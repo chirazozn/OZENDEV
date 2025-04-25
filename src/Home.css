@@ -604,38 +604,32 @@ MEDIA QUERIES
 .logo {
 height: 60PX;
 }
-
-  .hero-overlay h1 {
-      font-size: 2rem;
-  }
-
-  .hero-overlay p {
-      font-size: 1rem;
-  }
-
-  .service-card {
-      width: 100%;
-      max-width: 400px;
-  }
-
-  .footer p {
-      font-size: 1rem;
-  }
-
-  .footer .social-icons a {
-      font-size: 1.2rem;
-  }
-
-  .footer .contact-info {
-      margin-top: 1rem;
-  }
+.hamburger-img {
+  display: flex;
+  width: 30px;
+  height: auto;
+  margin-right: 60px;
+  cursor: pointer;
+   
+    }
+    .close-btn {
+      font-size: 25px;
+      margin-right: 40px;
+      height: 27px;
+      width: 30px;
+      color: #ffffb7;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 1002;
+      transition: transform 0.3s ease;
+    }
   .nav-links.active {
     display: flex;
     flex-direction: column;
-    position: fixed;
+    position: absolute;
     top: 70px;
-    left: 0;
-    width: 100%;
+    right: 0;
+    width: 80%;
     height: calc(100vh - 70px);
     background-color: #002244;
     padding: 2rem;
@@ -682,26 +676,32 @@ height: 60PX;
     margin-top: 5px;
   }
 
-.hamburger-img {
-  display: flex;
-  width: 30px;
-  height: auto;
-  margin-right: 60px;
-  cursor: pointer;
+
    
-    }
-    .close-btn {
-      font-size: 25px;
-      margin-right: 40px;
-      height: 27px;
-      width: 30px;
-      color: #ffffb7;
-      cursor: pointer;
-      border-radius: 50%;
-      z-index: 1002;
-      transition: transform 0.3s ease;
-    }
-   
+  .hero-overlay h1 {
+    font-size: 2rem;
+}
+
+.hero-overlay p {
+    font-size: 1rem;
+}
+
+.service-card {
+    width: 100%;
+    max-width: 400px;
+}
+
+.footer p {
+    font-size: 1rem;
+}
+
+.footer .social-icons a {
+    font-size: 1.2rem;
+}
+
+.footer .contact-info {
+    margin-top: 1rem;
+}
 
 @keyframes slideIn {
   from {
