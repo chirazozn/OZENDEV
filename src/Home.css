@@ -81,6 +81,8 @@ NAVBAR
   text-decoration: none;
   font-weight: bold;
 }
+
+/* Mobile Nav Toggle (JS toggles `active`) */
 .nav-links.active {
   display: flex;
   flex-direction: column;
@@ -587,7 +589,7 @@ MEDIA QUERIES
 
 
 
-@media (max-width: 788px) {
+@media (max-width: 768px) {
 .navbar {
   position: fixed;
   top: 0;
@@ -602,8 +604,36 @@ MEDIA QUERIES
 .logo {
 height: 60PX;
 }
+
+  .hero-overlay h1 {
+      font-size: 2rem;
+  }
+
+  .hero-overlay p {
+      font-size: 1rem;
+  }
+
+  .service-card {
+      width: 100%;
+      max-width: 400px;
+  }
+
+  .footer p {
+      font-size: 1rem;
+  }
+
+  .footer .social-icons a {
+      font-size: 1.2rem;
+  }
+
+  .footer .contact-info {
+      margin-top: 1rem;
+  }
+
+
+
 .hamburger-img {
-  display: block;  /* Change display to block or flex */
+  display: flex;
   width: 30px;
   height: auto;
   margin-right: 60px;
@@ -621,89 +651,30 @@ height: 60PX;
       z-index: 1002;
       transition: transform 0.3s ease;
     }
+   
     .nav-links {
       display: none;
+     
       flex-direction: column;
-    position: absolute;
-    top: 70px;
-    right: 0;
-    width: 80%;
-    height: calc(100vh - 70px);
-    background-color: #002244;
-    padding: 2rem;
-    gap: 2rem;
-    z-index: 200;
-    overflow-y: auto;
+      background-color: #002244;
+      position: absolute;
+      border: 2px solid #ffffb7;
+      border-radius: 10px;
+      padding: 1rem;
+      z-index: 999;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
-  .nav-links.active {
-    display: flex;
+    
+    .nav-links.active {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      display: flex;
+      top: 45px; /* Push below navbar */
+      right: 25px;
+      width: 100px;
+      animation: slideIn 0.4s ease forwards;
+    }
   
-  }
-
-  .nav-links li a {
-    font-size: 1.2rem;
-    padding: 10px;
-    color: #ffffb7;
-  }
-
-  .mobile-extra-info {
-    margin-top: auto;
-    border-top: 1px solid #FFD700;
-    padding-top: 1rem;
-    color: #ffffb7;
-    text-align: center;
-  }
-
-  .contact-icons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-
-  .contact-icons a {
-    color: #FFD700;
-    transition: transform 0.2s;
-  }
-
-  .contact-icons a:hover {
-    transform: scale(1.2);
-  }
-
-  .mobile-location,
-  .mobile-phone {
-    font-size: 1rem;
-    margin-top: 5px;
-  }
-
-
-   
-  .hero-overlay h1 {
-    font-size: 2rem;
-}
-
-.hero-overlay p {
-    font-size: 1rem;
-}
-
-.service-card {
-    width: 100%;
-    max-width: 400px;
-}
-
-.footer p {
-    font-size: 1rem;
-}
-
-.footer .social-icons a {
-    font-size: 1.2rem;
-}
-
-.footer .contact-info {
-    margin-top: 1rem;
-}
-
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -714,8 +685,6 @@ height: 60PX;
     transform: translateX(0);
   }}
 }
-
-
 
 
 @media (min-width: 500px) and (max-width: 768px) {
