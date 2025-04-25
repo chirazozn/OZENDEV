@@ -73,7 +73,6 @@ NAVBAR
   display: flex;
   list-style: none;
   gap: 1.5rem;
-  margin-right: 40px;
 }
 
 .nav-links li a {
