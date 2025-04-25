@@ -204,22 +204,63 @@ useEffect(() => {
       </section>
 
       {/* À propos */}
-      <section id="about" className="about-section">
-        <h2>À propos</h2>
-        <p>
-          Chez <strong>Inova Dev</strong>, nous sommes des créateurs, développeurs et stratèges digitaux passionnés,
-          dédiés à aider les entreprises à réussir dans l’ère numérique. Basée en Algérie, notre équipe propose
-          des solutions web et mobiles intelligentes et adaptées à vos objectifs.
-        </p>
-        <p>
-          Que ce soit pour lancer un site personnalisé, créer une application mobile, ou renforcer votre marque
-          via le marketing digital et le design graphique, Inova Dev est votre partenaire technologique de confiance.
-          Nous mettons l'accent sur l'innovation, la qualité et la collaboration à long terme.
-        </p>
-        <p>
-          Construisons ensemble votre avenir digital.
-        </p>
-      </section>
+ {/* À propos */}
+<section id="about" className="about-section">
+  <motion.h2
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.6 }}
+  >
+    À propos
+  </motion.h2>
+  
+  <motion.div
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.3 }}
+    variants={{
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.3
+        }
+      }
+    }}
+  >
+    <motion.p
+      variants={{
+        hidden: { opacity: 0, y: 40 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+      }}
+    >
+      Chez <strong>Inova Dev</strong>, nous sommes des créateurs, développeurs et stratèges digitaux passionnés,
+      dédiés à aider les entreprises à réussir dans l'ère numérique. Basée en Algérie, notre équipe propose
+      des solutions web et mobiles intelligentes et adaptées à vos objectifs.
+    </motion.p>
+    
+    <motion.p
+      variants={{
+        hidden: { opacity: 0, y: 40 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+      }}
+    >
+      Que ce soit pour lancer un site personnalisé, créer une application mobile, ou renforcer votre marque
+      via le marketing digital et le design graphique, Inova Dev est votre partenaire technologique de confiance.
+      Nous mettons l'accent sur l'innovation, la qualité et la collaboration à long terme.
+    </motion.p>
+    
+    <motion.p
+      variants={{
+        hidden: { opacity: 0, y: 40 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+      }}
+    >
+      Construisons ensemble votre avenir digital.
+    </motion.p>
+  </motion.div>
+</section>
 
 
 
@@ -280,58 +321,136 @@ useEffect(() => {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="contact-section">
-        <h2>Contact</h2>
-        <p>Vous avez un projet ou besoin de support ? Nous serions ravis d’échanger avec vous !</p>
-      
-      
-      
-      
-        <div className="contact-icons">
-  <a href="tel:0770716047" title="Appeler">
-    <FaPhone className="icon-contact" />
-  </a>
-  <a href="mailto:inovadev.contact1@gmail.com" title="Envoyer un e-mail">
-    <FaEnvelope className="icon-contact" />
-  </a>
-</div>
+    {/* Contact */}
+<section id="contact" className="contact-section">
+  <motion.h2
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.6 }}
+  >
+    Contact
+  </motion.h2>
+  
+  <motion.p
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.6, delay: 0.2 }}
+  >
+    Vous avez un projet ou besoin de support ? Nous serions ravis d'échanger avec vous !
+  </motion.p>
+  
+  <motion.div 
+    className="contact-icons"
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.5, delay: 0.3 }}
+  >
+    <motion.a 
+      href="tel:0770716047" 
+      title="Appeler"
+      whileHover={{ scale: 1.2, rotate: 5 }}
+      whileTap={{ scale: 0.9 }}
+    >
+      <FaPhone className="icon-contact" />
+    </motion.a>
+    <motion.a 
+      href="mailto:inovadev.contact1@gmail.com" 
+      title="Envoyer un e-mail"
+      whileHover={{ scale: 1.2, rotate: 5 }}
+      whileTap={{ scale: 0.9 }}
+    >
+      <FaEnvelope className="icon-contact" />
+    </motion.a>
+  </motion.div>
 
-
-        <div className="contact-container">
-          <img src={contactImg} alt="Contact" className="contact-img" />
-<form className="contact-form" onSubmit={handleSubmit}>
-  <input
-    type="text"
-    placeholder="Votre nom"
-    value={nom}
-    onChange={(e) => setNom(e.target.value)}
-    required
-  />
-  <input
-    type="email"
-    placeholder="Votre email"
-    value={email}
-    onChange={(e) => setEmail(e.target.value)}
-    required
-  />
-  <textarea
-    rows="5"
-    placeholder="Votre message"
-    value={message}
-    onChange={(e) => setMessage(e.target.value)}
-    required
-  ></textarea>
-  <button type="submit">Envoyer le message</button>
-  {success && (
-  <p className={`feedback-message ${messageType === 'success' ? 'success' : 'error'}`}>
-    {success}
-  </p>
-)}
-</form>
-
-
-        </div>
-      </section>
+  <motion.div 
+    className="contact-container"
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.1 }}
+    transition={{ duration: 0.7, delay: 0.4 }}
+  >
+    <motion.img 
+      src={contactImg} 
+      alt="Contact" 
+      className="contact-img"
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.5 }}
+    />
+    
+    <motion.form 
+      className="contact-form" 
+      onSubmit={handleSubmit}
+      initial={{ opacity: 0, x: 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.5 }}
+    >
+      <motion.input
+        type="text"
+        placeholder="Votre nom"
+        value={nom}
+        onChange={(e) => setNom(e.target.value)}
+        required
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: 0.6 }}
+        whileFocus={{ scale: 1.02 }}
+      />
+      <motion.input
+        type="email"
+        placeholder="Votre email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: 0.7 }}
+        whileFocus={{ scale: 1.02 }}
+      />
+      <motion.textarea
+        rows="5"
+        placeholder="Votre message"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        required
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: 0.8 }}
+        whileFocus={{ scale: 1.02 }}
+      ></motion.textarea>
+      <motion.button 
+        type="submit"
+        whileHover={{ scale: 1.05, backgroundColor: "#0056b3" }}
+        whileTap={{ scale: 0.95 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: 0.9 }}
+      >
+        Envoyer le message
+      </motion.button>
+      {success && (
+        <motion.p 
+          className={`feedback-message ${messageType === 'success' ? 'success' : 'error'}`}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {success}
+        </motion.p>
+      )}
+    </motion.form>
+  </motion.div>
+</section>
 
       {/* Localisation */}
       <section className="location-section" id="location">
