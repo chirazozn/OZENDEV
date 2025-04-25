@@ -174,7 +174,6 @@ useEffect(() => {
         </div>
 
         <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
-          <li><a href="#home">Accueil</a></li>
           <li><a href="#about">À propos</a></li>
           <li><a href="#realisations">Réalisations</a></li>
           <li><a href="#services">Services</a></li>

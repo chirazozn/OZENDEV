@@ -65,7 +65,6 @@ NAVBAR
   display: flex;
   list-style: none;
   gap: 1.5rem;
-  right: 0;
 }
 
 .nav-links li a {
@@ -620,7 +619,7 @@ height: 60PX;
       top: 60px; /* Push below navbar */
       right: 60px;
       width: 80%;
-      height: 85vh; /* Full screen height */
+      height: auto; /* Full screen height */
       animation: slideIn 0.4s ease forwards;
     }
     
