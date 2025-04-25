@@ -644,7 +644,7 @@ height: 60PX;
 .contact-menuicons {
   display: flex;
   justify-content: space-around;
-  right: 50px;
+  right: 70px;
   align-items: center;
   position: absolute;
 }
