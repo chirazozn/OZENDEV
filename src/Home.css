@@ -635,7 +635,7 @@ height: 60PX;
       display: flex;
       top: 45px; /* Push below navbar */
       right: 25px;
-      width: 100px;
+      width: 200px;
       animation: slideIn 0.4s ease forwards;
     }
   
@@ -664,6 +664,29 @@ height: 60PX;
   .footer .contact-info {
       margin-top: 1rem;
   }
+  
+/* Contact Menu Icons */
+.contact-menuicons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  top: 60px; /* Adjust based on where you want the icons */
+  right: 20px;
+}
+
+.icon-menucontact,
+.icon-menu-contact {
+  color: white;
+  font-size: 20px;
+  margin: 10px;
+  transition: color 0.3s ease;
+}
+
+.icon-menucontact:hover,
+.icon-menu-contact:hover {
+  color: #ffffb7;
+}
 
 @keyframes slideIn {
   from {

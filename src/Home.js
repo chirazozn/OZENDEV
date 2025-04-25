@@ -182,8 +182,16 @@ useEffect(() => {
           <li><a href="#location">Localisation</a></li>
 
         </ul>
-      </nav>
-
+       {/* Contact Icons */}
+  <div className="contact-menuicons">
+    <a href="tel:0770716047" title="Appeler">
+      <FaPhone className="icon-menucontact" />
+    </a>
+    <a href="mailto:inovadev.contact1@gmail.com" title="Envoyer un e-mail">
+      <FaEnvelope className="icon-menu-contact" />
+    </a>
+  </div>
+</nav>
 
 
 
