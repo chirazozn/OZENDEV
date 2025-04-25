@@ -603,7 +603,7 @@ MEDIA QUERIES
 height: 60PX;
 }
 .hamburger-img {
-  display: flex;
+  display: block;  /* Change display to block or flex */
   width: 30px;
   height: auto;
   margin-right: 60px;
