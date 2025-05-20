@@ -9,6 +9,7 @@ import { useLocation } from 'react-router-dom';
 import hamburgerIcon from './assets/hamburger-icon.png';
 import contactImg from './assets/contact.jpg';
 import { useNavigate } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 
 const Home = () => {
@@ -158,10 +159,21 @@ useEffect(() => {
   }
 
   
-  
+
 
   return (
+
+
+  
+
     <div className="main-container">
+        <Helmet>
+    <title>Inova Dev - Solutions digitales en Algérie</title>
+    <meta name="description" content="Inova Dev conçoit des solutions digitales web et mobiles en Algérie. Sites web, applications mobiles, marketing digital..." />
+    <meta name="keywords" content="inova dev, développement web, algérie, site web, application mobile, digital, marketing" />
+    <meta name="robots" content="index, follow" />
+  </Helmet>
+<header>
       {/* Menu */}
       <nav className="navbar">
         <img src={logo} alt="Logo" className="logo" />
@@ -192,7 +204,7 @@ useEffect(() => {
   </div>
 </nav>
 
-
+</header>
 
       {/* Hero Section */}
       <section id="home" className="hero-section">
