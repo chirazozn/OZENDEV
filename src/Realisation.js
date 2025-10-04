@@ -4,6 +4,7 @@ import './Realisation.css';
 import logo from './assets/logo.png';
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion'; // Make sure to import motion from framer-motion
+import { FaFacebook, FaInstagram, FaLinkedin, FaPhone, FaEnvelope ,FaMapMarkerAlt } from 'react-icons/fa';
 
 const RealisationPage = () => {
   const [services, setServices] = useState([]);
@@ -147,6 +148,25 @@ const RealisationPage = () => {
           </motion.div>
         ))}
       </motion.div>
+
+      <footer className="footer">
+              <p>Suivez-nous sur</p>
+              <div className="social-icons">
+                <a href="#"><FaFacebook /></a>
+                <a href="#"><FaInstagram /></a>
+                <a href="#"><FaLinkedin /></a>
+              </div>
+      
+              <div className="contact-info">
+                <p><strong>Adresse :</strong> alger-said hamdine </p>
+                <p><strong>Téléphone 1 :</strong> +213 456 789</p>
+                <p><strong>Téléphone 2 :</strong> +213 987 654</p>
+                <p><strong>Email :</strong> contact@Innovazen.com</p>
+              </div>
+      
+              <p>Boîte de développement : innovazen © 2025</p>
+            
+            </footer>
     </div>
   );
 };

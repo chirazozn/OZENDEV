@@ -2,6 +2,7 @@
 body, html {
   margin: 0;
   padding: 0;
+  overflow-x: hidden; /* ✅ empêche le scroll horizontal */
   font-family: 'Arial', sans-serif;
   scroll-behavior: smooth;
 }/* 
@@ -29,7 +30,7 @@ left:0;
 /* Main Wrapper */
 .main-container {
   background: white;
-  color: #002244;
+  color: #ffffff;
   position: relative;
   z-index: 1;
 }
@@ -50,7 +51,7 @@ NAVBAR
 }
 
 .logo {
-  height: 60px;
+  height: 100px;
 
 }
 
@@ -73,32 +74,163 @@ NAVBAR
   font-weight: bold;
 }
 
-
 /* ===============================
 HERO SECTION
 ================================= */
 .hero-section {
   height: 90vh;
-  background: url('./assets/welcome-bg.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  padding: 2rem;
+  margin-top: 80px;
+  background: rgba(0, 0, 0, 0.089);
+  overflow: hidden; /* ✅ évite débordements pendant les animations */
 }
 
-.hero-overlay {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 0rem;
-  color:#ffffb7;
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
 }
 
-.hero-overlay h1 {
-  font-size: 2rem;
+.hero-text {
+  color: #002244;
+  text-align: left;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.526);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease-out forwards; /* ✅ animation */
 }
 
-.hero-overlay p {
-  font-size: 1.5rem;
+.hero-text h1 {
+  font-size:3rem;
+  margin-bottom: 1rem;
 }
+
+.hero-text p {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  border-radius: 15px;
+  object-fit: fill;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: scale(0.9);
+  animation: zoomIn 1s ease-out forwards 0.5s; /* ✅ délai pour arriver après le texte */
+}
+
+/* ===============================
+MOBILE
+================================= */
+@media (max-width: 810px) {
+  .hero-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-image {
+    display: none;
+  }
+
+  .hero-section {
+    height: 100vh;
+    background: url('./assets/welcome-bg.jpg') center center / cover no-repeat;
+    position: relative;
+  }
+
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.27);
+    z-index: 1;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards; /* ✅ overlay animé */
+  }
+
+  .hero-text {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.512);
+    padding: 1.5rem;
+    border-radius: 20px;
+    color: #002244;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease-out forwards 0.3s;
+  }
+
+  .hero-text h1,
+  .hero-text p {
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.526);
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-text h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+    margin: 0.3rem 0;
+  }
+}
+
+/* ===============================
+ANIMATIONS
+================================= */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
 
 
 

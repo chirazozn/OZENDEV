@@ -10,6 +10,7 @@ import hamburgerIcon from './assets/hamburger-icon.png';
 import contactImg from './assets/contact.jpg';
 import { useNavigate } from "react-router-dom";
 import { Helmet } from 'react-helmet';
+import welcomeBg from "./assets/welcome-bg.jpg";
 
 
 const Home = () => {
@@ -168,9 +169,9 @@ useEffect(() => {
 
     <div className="main-container">
         <Helmet>
-    <title>Inova Dev - Solutions digitales en Algérie</title>
-    <meta name="description" content="Inova Dev conçoit des solutions digitales web et mobiles en Algérie. Sites web, applications mobiles, marketing digital..." />
-    <meta name="keywords" content="inova dev, développement web, algérie, site web, application mobile, digital, marketing" />
+    <title>Innovazen - Solutions digitales en Algérie</title>
+    <meta name="description" content="Innovazen conçoit des solutions digitales web et mobiles en Algérie. Sites web, applications mobiles, marketing digital..." />
+    <meta name="keywords" content="innovazen, développement web, algérie, site web, application mobile, digital, marketing" />
     <meta name="robots" content="index, follow" />
   </Helmet>
 <header>
@@ -198,7 +199,7 @@ useEffect(() => {
     <a href="tel:0770716047" title="Appeler">
       <FaPhone className="icon-menucontact" />
     </a>
-    <a href="mailto:inovadev.contact1@gmail.com" title="Envoyer un e-mail">
+    <a href="mailto:innovazen.contact1@gmail.com" title="Envoyer un e-mail">
       <FaEnvelope className="icon-menu-contact" />
     </a>
   </div>
@@ -206,14 +207,20 @@ useEffect(() => {
 
 </header>
 
-      {/* Hero Section */}
-      <section id="home" className="hero-section">
-        <div className="hero-overlay">
-          <h1>Bienvenue chez Inova Dev</h1>
-          <p>Nous concevons des solutions digitales intelligentes, évolutives et sécurisées</p>
-          <p>Créons ensemble quelque chose de formidable.</p>
-        </div>
-      </section>
+  {/* Hero Section */}
+<section id="home" className="hero-section">
+  <div className="hero-content">
+    <div className="hero-text">
+      <h1>Bienvenue chez Innovazen</h1>
+      <p>Nous concevons des solutions digitales intelligentes, évolutives et sécurisées</p>
+      <p>Créons ensemble quelque chose de formidable.</p>
+    </div>
+    <div className="hero-image">
+    <img src={welcomeBg} alt="Bienvenue" />
+    </div>
+  </div>
+</section>
+
 
       {/* À propos */}
  {/* À propos */}
@@ -247,7 +254,7 @@ useEffect(() => {
         visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
       }}
     >
-      Chez <strong>Inova Dev</strong>, nous sommes des créateurs, développeurs et stratèges digitaux passionnés,
+      Chez <strong>Innovazen</strong>, nous sommes des créateurs, développeurs et stratèges digitaux passionnés,
       dédiés à aider les entreprises à réussir dans l'ère numérique. Basée en Algérie, notre équipe propose
       des solutions web et mobiles intelligentes et adaptées à vos objectifs.
     </motion.p>
@@ -259,7 +266,7 @@ useEffect(() => {
       }}
     >
       Que ce soit pour lancer un site personnalisé, créer une application mobile, ou renforcer votre marque
-      via le marketing digital et le design graphique, Inova Dev est votre partenaire technologique de confiance.
+      via le marketing digital et le design graphique, Innovazen est votre partenaire technologique de confiance.
       Nous mettons l'accent sur l'innovation, la qualité et la collaboration à long terme.
     </motion.p>
     
@@ -369,7 +376,7 @@ useEffect(() => {
       <FaPhone className="icon-contact" />
     </motion.a>
     <motion.a 
-      href="mailto:inovadev.contact1@gmail.com" 
+      href="mailto:innovazen.contact1@gmail.com" 
       title="Envoyer un e-mail"
       whileHover={{ scale: 1.2, rotate: 5 }}
       whileTap={{ scale: 0.9 }}
@@ -472,7 +479,7 @@ useEffect(() => {
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.856062959847!2d3.0361534745119085!3d36.72601797187994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fad94be504659%3A0x83fcc76c94502114!2sResidence%20LALA%20MALIKA!5e0!3m2!1sfr!2sdz!4v1744656840711!5m2!1sfr!2sdz"
             allowFullScreen=""
             loading="lazy"
-            title="Localisation Inova Dev"
+            title="Localisation Innovazen"
           ></iframe>
         </div>
         <button className="follow-btn">
@@ -501,10 +508,10 @@ useEffect(() => {
           <p><strong>Adresse :</strong> alger-said hamdine </p>
           <p><strong>Téléphone 1 :</strong> +213 456 789</p>
           <p><strong>Téléphone 2 :</strong> +213 987 654</p>
-          <p><strong>Email :</strong> contact@inovadev.com</p>
+          <p><strong>Email :</strong> contact@Innovazen.com</p>
         </div>
 
-        <p>Boîte de développement : Inova Dev © 2025</p>
+        <p>Boîte de développement : innovazen © 2025</p>
       
       </footer>
     </div>
