@@ -149,8 +149,6 @@ useEffect(() => {
       <div className="video-container">
         <video 
   src={videoIntro} 
-  height={"auto"}
-  width={"auto"}
   autoPlay 
   muted 
   playsInline 
