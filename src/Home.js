@@ -105,7 +105,7 @@ useEffect(() => {
   } else {
     const timer = setTimeout(() => {
       setShowContent(true);
-    }, 4000);
+    }, 2000);
     return () => clearTimeout(timer);
   }
 }, [location.search]);
@@ -149,6 +149,8 @@ useEffect(() => {
       <div className="video-container">
         <video 
   src={videoIntro} 
+  height={"auto"}
+  width={"auto"}
   autoPlay 
   muted 
   playsInline 
@@ -226,10 +228,7 @@ useEffect(() => {
  {/* À propos */}
 <section id="about" className="about-section">
   <motion.h2
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.3 }}
-    transition={{ duration: 0.6 }}
+ 
   >
     À propos
   </motion.h2>
@@ -252,6 +251,7 @@ useEffect(() => {
       variants={{
         hidden: { opacity: 0, y: 40 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+
       }}
     >
       Chez <strong>Innovazen</strong>, nous sommes des créateurs, développeurs et stratèges digitaux passionnés,

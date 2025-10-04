@@ -139,10 +139,7 @@ const ServiceDetails = () => {
       {/* Description Section */}
       <motion.section 
         className="description-section"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={fadeInUp}
+
       >
         <h2>Description</h2>
         <p>{service.description}</p>
