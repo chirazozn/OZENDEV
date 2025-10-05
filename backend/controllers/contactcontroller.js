@@ -19,7 +19,7 @@ exports.createContact = (req, res) => {
 
   // Configuration du message à envoyer
   const mailOptions = {
-    from: 'inovadev.contact1@gmail.com',
+    from: 'innovazen.contact1@gmail.com',
     to: 'inovadev.contact1@gmail.com', // Ton adresse email où le message sera envoyé
     subject: `Nouveau message de ${nom} via le formulaire de contact`,
     text: `Nom: ${nom}\nEmail: ${email}\nMessage:\n${message}`,
