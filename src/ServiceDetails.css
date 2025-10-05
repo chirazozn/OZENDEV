@@ -163,6 +163,9 @@ MOBILE
   .hero-section {
     max-height: 50vh;
     padding: 1rem;
+    background-size: contain !important;   /* ✅ toujours entière */
+    background-position: center center !important; /* ✅ centrée */
+    background-repeat: no-repeat !important; /* ✅ pas de répétition */
 
   }
 

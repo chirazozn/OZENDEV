@@ -113,14 +113,18 @@ const ServiceDetails = () => {
         <li className="nav-link"><a href="/?skipIntro=true#home">Retour</a></li>
       </motion.nav>
 
+
+
+
+
       <motion.section 
   className="hero-section"
   style={{
     backgroundImage: window.innerWidth <= 810 
       ? `url(https://ozendev-backend.onrender.com/${service.image_url})`
       : "none",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
+    backgroundSize: window.innerWidth <= 810 ? "contain" : "cover", // ✅ contain sur mobile
+    backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
   }}
   initial={{ opacity: 0 }}
