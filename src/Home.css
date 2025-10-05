@@ -427,7 +427,7 @@ SERVICES SECTION
 .service-card img {
   width: 100%;
   height: 180px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .service-card h3 {

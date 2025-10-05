@@ -208,18 +208,30 @@ useEffect(() => {
 </header>
 
   {/* Hero Section */}
-<section id="home" className="hero-section">
+  <section 
+  id="home" 
+  className="hero-section"
+  style={{
+    backgroundImage: window.innerWidth <= 810 ? `url(${welcomeBg})` : "none",
+    backgroundSize: "cover",backgroundColor:"white",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
+>
   <div className="hero-content">
     <div className="hero-text">
       <h1>Bienvenue chez Innovazen</h1>
       <p>Nous concevons des solutions digitales intelligentes, évolutives et sécurisées</p>
       <p>Créons ensemble quelque chose de formidable.</p>
     </div>
-    <div className="hero-image">
-    <img src={welcomeBg} alt="Bienvenue" />
-    </div>
+    {window.innerWidth > 810 && (
+      <div className="hero-image">
+        <img src={welcomeBg} alt="Bienvenue" />
+      </div>
+    )}
   </div>
 </section>
+
 
 
       {/* À propos */}
