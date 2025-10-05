@@ -409,17 +409,24 @@ useEffect(() => {
       transition={{ duration: 0.6, delay: 0.5 }}
     >
       <motion.input
-        type="text"
-        placeholder="Votre nom"
-        value={nom}
-        onChange={(e) => setNom(e.target.value)}
-        required
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: 0.6 }}
-        whileFocus={{ scale: 1.02 }}
-      />
+  type="text"
+  placeholder="Votre nom"
+  value={nom}
+  onChange={(e) => {
+    const value = e.target.value;
+    // ✅ autorise seulement lettres (a-z, A-Z), espaces et accents
+    if (/^[A-Za-zÀ-ÖØ-öø-ÿ\s]*$/.test(value)) {
+      setNom(value);
+    }
+  }}
+  required
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.4, delay: 0.6 }}
+  whileFocus={{ scale: 1.02 }}
+/>
+
       <motion.input
         type="email"
         placeholder="Votre email"

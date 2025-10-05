@@ -432,6 +432,7 @@ SERVICES SECTION
 
 .service-card h3 {
   margin: 1rem 0;
+  color: #002244;
 }
 
 .service-card button {

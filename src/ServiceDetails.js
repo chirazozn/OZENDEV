@@ -107,34 +107,42 @@ const ServiceDetails = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <img src={logo} alt="Logo" className="logo" />
+<a href="/?skipIntro=true#home">
+  <img src={logo} alt="Logo" className="logo" />
+</a>
         <li className="nav-link"><a href="/?skipIntro=true#home">Retour</a></li>
       </motion.nav>
 
-      {/* Hero Section */}
-      <motion.section
-        className="hero-section"
-        style={{
-          backgroundImage: `url(https://ozendev-backend.onrender.com/${service.image_url})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          height: '80vh',
-          position: 'relative',
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <motion.div 
-          className="hero-overlay"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-        >
-          <h1>{service.name}</h1>
-        </motion.div>
-      </motion.section>
+      <motion.section 
+  className="hero-section"
+  style={{
+    backgroundImage: window.innerWidth <= 810 
+      ? `url(https://ozendev-backend.onrender.com/${service.image_url})`
+      : "none",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1 }}
+>
+  <div className="hero-content">
+    {/* Texte */}
+    <motion.div className="hero-overlay">
+      <h1>{service.name}</h1>
+    </motion.div>
+
+    {/* Image visible seulement en desktop */}
+    {window.innerWidth > 810 && (
+      <motion.div className="hero-image">
+        <img src={`https://ozendev-backend.onrender.com/${service.image_url}`} alt={service.name} />
+      </motion.div>
+    )}
+  </div>
+</motion.section>
+
+
 
       {/* Description Section */}
       <motion.section 

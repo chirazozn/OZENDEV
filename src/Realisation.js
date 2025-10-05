@@ -79,8 +79,9 @@ const RealisationPage = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <img src={logo} alt="Logo" className="logo" />
-        <li className="nav-link"><a href="/?skipIntro=true#home">Retour</a></li>
+<a href="/?skipIntro=true#home">
+  <img src={logo} alt="Logo" className="logo" />
+</a>        <li className="nav-link"><a href="/?skipIntro=true#home">Retour</a></li>
       </motion.nav>
 
       <motion.div 
