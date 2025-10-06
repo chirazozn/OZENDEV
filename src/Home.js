@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom';
 import hamburgerIcon from './assets/hamburger-icon.png';
 import contactImg from './assets/contact.jpg';
 import { useNavigate } from "react-router-dom";
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import welcomeBg from "./assets/welcome-bg.jpg";
 
 
@@ -172,12 +172,21 @@ useEffect(() => {
   
 
     <div className="main-container">
-        <Helmet>
-    <title>Innovazen - Solutions digitales en Algérie</title>
-    <meta name="description" content="Innovazen conçoit des solutions digitales web et mobiles en Algérie. Sites web, applications mobiles, marketing digital..." />
-    <meta name="keywords" content="innovazen, développement web, algérie, site web, application mobile, digital, marketing" />
-    <meta name="robots" content="index, follow" />
-  </Helmet>
+         <HelmetProvider>
+      <Helmet>
+        <title>Innovazen - Solutions digitales en Algérie</title>
+        <meta 
+          name="description" 
+          content="Innovazen conçoit des solutions digitales web et mobiles en Algérie. Sites web, applications mobiles, marketing digital..." 
+        />
+        <meta 
+          name="keywords" 
+          content="innovazen, développement web, algérie, site web, application mobile, digital, marketing" 
+        />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
+      {/* ... le reste de ton app */}
+    </HelmetProvider>
 <header>
       {/* Menu */}
       <nav className="navbar">
