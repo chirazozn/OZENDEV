@@ -12,15 +12,15 @@ exports.createContact = (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'inovadev.contact1@gmail.com', // Remplace par ton adresse Gmail
-      pass: 'xgnh gosd mbtb idrh', // Remplace par ton mot de passe (ou mot de passe d’application)
+      user: 'innovazen.contact1@gmail.com', // Remplace par ton adresse Gmail
+      pass: 'pkvh niku ltid xpkl', // Remplace par ton mot de passe (ou mot de passe d’application)
     },
   });
 
   // Configuration du message à envoyer
   const mailOptions = {
     from: 'innovazen.contact1@gmail.com',
-    to: 'inovadev.contact1@gmail.com', // Ton adresse email où le message sera envoyé
+    to: 'innovazen.contact1@gmail.com', // Ton adresse email où le message sera envoyé
     subject: `Nouveau message de ${nom} via le formulaire de contact`,
     text: `Nom: ${nom}\nEmail: ${email}\nMessage:\n${message}`,
   };
