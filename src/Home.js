@@ -45,6 +45,7 @@ const Home = () => {
         // setRealisationError("Impossible de charger les réalisations. Veuillez réessayer plus tard.");
       });
   }, []);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -82,6 +83,9 @@ const Home = () => {
       setMessageType("error");
           }
   };
+
+
+  
   useEffect(() => {
     if (success || error) {
       const timer = setTimeout(() => {

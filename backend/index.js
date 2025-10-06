@@ -2,10 +2,15 @@
 const express = require('express');
 
 const app = express();
+
 const cors = require('cors');
+
 app.use(cors({
-  origin: 'https://inovadev.vercel.app' // remplace avec ton vrai lien Vercel
+  origin: ["http://localhost:3000", "https://ozendev-frontend.onrender.com"], // ton front local + ton front déployé
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"]
 }));
+
 const path = require('path');
 app.use('/images', express.static(path.join(__dirname, '../public/images')));
 const port = process.env.PORT || 3001;
