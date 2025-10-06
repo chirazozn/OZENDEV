@@ -5,11 +5,9 @@ const app = express();
 
 const cors = require('cors');
 
-app.use(cors({
-  origin: ["http://localhost:3000", "https://ozendev-frontend.onrender.com"], // ton front local + ton front déployé
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"]
-}));
+
+app.use(cors({ origin: "*"}));
+
 
 const path = require('path');
 app.use('/images', express.static(path.join(__dirname, '../public/images')));
