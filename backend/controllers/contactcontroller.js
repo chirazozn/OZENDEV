@@ -8,39 +8,41 @@ exports.createContact = (req, res) => {
     return res.status(400).json({ error: 'Tous les champs sont requis.' });
   }
 
-  // Configuration du transporteur Nodemailer pour Gmail
+  // Config transporteur Nodemailer
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'innovazen.contact1@gmail.com', // Remplace par ton adresse Gmail
-      pass: 'pkvh niku ltid xpkl', // Remplace par ton mot de passe (ou mot de passe d’application)
+      user: 'innovazen.contact1@gmail.com',
+      pass: 'pkvh niku ltid xpkl', // mot de passe d'application Gmail
     },
   });
 
-  // Configuration du message à envoyer
   const mailOptions = {
     from: 'innovazen.contact1@gmail.com',
-    to: 'innovazen.contact1@gmail.com', // Ton adresse email où le message sera envoyé
+    to: 'innovazen.contact1@gmail.com',
     subject: `Nouveau message de ${nom} via le formulaire de contact`,
     text: `Nom: ${nom}\nEmail: ${email}\nMessage:\n${message}`,
   };
 
-  // Envoi de l'email
+  // Envoi email + ensuite insertion DB
   transporter.sendMail(mailOptions, (err, info) => {
     if (err) {
-      console.error('Erreur d\'envoi de l\'email:', err);
-      return res.status(500).json({ error: 'Erreur lors de l\'envoi de l\'email.' });
+      console.error("Erreur d'envoi de l'email:", err);
+      return res.status(500).json({ error: "Erreur lors de l'envoi de l'email." });
     }
-    console.log('Email envoyé:', info.response);
-  });
 
-  // Insertion dans la base de données
-  const sql = 'INSERT INTO contact (nom, email, message) VALUES (?, ?, ?)';
-  db.query(sql, [nom, email, message], (err, result) => {
-    if (err) {
-      console.error('Erreur lors de l\'insertion :', err);
-      return res.status(500).json({ error: 'Erreur serveur' });
-    }
-    res.status(200).json({ message: 'Message envoyé avec succès' });
+    console.log('Email envoyé:', info.response);
+
+    // Si email OK → insérer dans DB
+    const sql = 'INSERT INTO contact (nom, email, message) VALUES (?, ?, ?)';
+    db.query(sql, [nom, email, message], (err, result) => {
+      if (err) {
+        console.error('Erreur lors de l\'insertion :', err);
+        return res.status(500).json({ error: 'Erreur serveur' });
+      }
+
+      // ✅ Réponse envoyée UNE SEULE FOIS ici
+      return res.status(200).json({ message: 'Message envoyé avec succès' });
+    });
   });
 };
