@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
-import { HiH1 } from 'react-icons/hi2';
 
 export default function ChatBox() {
   const [messages, setMessages] = useState([
@@ -10,6 +9,7 @@ export default function ChatBox() {
   const [loading, setLoading] = useState(false);
   const containerRef = useRef();
 
+  // Scroll automatique vers le bas
   useEffect(() => {
     containerRef.current?.scrollTo({
       top: containerRef.current.scrollHeight,
@@ -26,10 +26,8 @@ export default function ChatBox() {
     setLoading(true);
 
     try {
-        const API_URL = 'https://ozendev-backend.onrender.com';
-
-        
-const res = await axios.post(`${API_URL}/api/chat`, { message: input.trim() });
+      const API_URL = 'https://ozendev-backend.onrender.com';
+      const res = await axios.post(`${API_URL}/api/chat`, { message: input.trim() });
 
       if (res.data.reply) {
         setMessages(prev => [...prev, { role: 'assistant', content: res.data.reply }]);
@@ -38,7 +36,10 @@ const res = await axios.post(`${API_URL}/api/chat`, { message: input.trim() });
       }
     } catch (err) {
       console.error("Erreur Chat :", err);
-      setMessages(prev => [...prev, { role: 'assistant', content: '❌ Désolé, erreur serveur. Réessaie plus tard.' }]);
+      setMessages(prev => [
+        ...prev,
+        { role: 'assistant', content: '❌ Désolé, erreur serveur. Réessaie plus tard.' }
+      ]);
     } finally {
       setLoading(false);
     }
@@ -54,7 +55,15 @@ const res = await axios.post(`${API_URL}/api/chat`, { message: input.trim() });
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       {/* Messages */}
-      <div ref={containerRef} style={{ flex: 1, overflowY: 'auto', padding: 12, backgroundColor: '#f9f9f9' }}>
+      <div
+        ref={containerRef}
+        style={{
+          flex: 1,
+          overflowY: 'auto',
+          padding: 12,
+          backgroundColor: '#f9f9f9'
+        }}
+      >
         {messages.map((m, i) => (
           <div key={i} style={{ marginBottom: 10, textAlign: m.role === 'user' ? 'right' : 'left' }}>
             <div style={{
@@ -75,23 +84,41 @@ const res = await axios.post(`${API_URL}/api/chat`, { message: input.trim() });
 
       {/* Zone de saisie */}
       <div style={{
-  padding: 12,
-  borderTop: '1px solid #ddd',
-  backgroundColor: '#fff',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center' // centre horizontalement
-}}>        <textarea
+        padding: 12,
+        borderTop: '1px solid #ddd',
+        backgroundColor: '#fff',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 8
+      }}>
+        <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={onKey}
           placeholder="Écris ton message ici..."
-          style={{ width: '100%', height: 60, resize: 'none', padding: 8, borderRadius: 8, border: '1px solid #ccc' }}
+          style={{
+            width: '100%',
+            minHeight: 60,
+            resize: 'none',
+            padding: 8,
+            borderRadius: 8,
+            border: '1px solid #ccc',
+            fontSize: 16, // 🔹 empêche zoom mobile
+            boxSizing: 'border-box'
+          }}
         />
         <button
           onClick={send}
           disabled={loading}
-          style={{ marginTop: 8, width: '100%', padding: 10, background: '#002244', color: '#fff', borderRadius: 8, border: 'none', cursor: 'pointer' }}
+          style={{
+            width: '100%',
+            padding: 10,
+            background: '#002244',
+            color: '#fff',
+            borderRadius: 8,
+            border: 'none',
+            cursor: 'pointer'
+          }}
         >
           {loading ? 'Envoi...' : 'Envoyer'}
         </button>
