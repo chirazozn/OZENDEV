@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const chatController = require('../controllers/chatController');
+const { handleChat } = require("../controllers/chatController");
 
-// Route POST /api/chat
-router.post('/', chatController.handleChat);
+// Route POST vers ton contrôleur
+router.post("/", handleChat);
 
 module.exports = router;

@@ -12,10 +12,10 @@ app.use(cors()); // Allows cross-origin requests (e.g., from your React frontend
 app.use(express.json()); // Parses incoming JSON requests
 
 
-
-
 const chatRoutes = require('./routes/chat');
 app.use('/api/chat', chatRoutes);
+
+
 
 
 // Santé

@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import welcomeBg from "./assets/welcome-bg.jpg";
 import ChatBox from "./ChatBox"; // ou "../components/ChatBox" selon ton dossier
+import { FaComments } from 'react-icons/fa';
 
 
 const Home = () => {
@@ -27,7 +28,7 @@ const Home = () => {
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
   const [realisations, setRealisations] = useState([]);
-
+  const [showChat, setShowChat] = useState(false);
 
   useEffect(() => {
     console.log('Appel API réalisations...');
@@ -167,6 +168,7 @@ useEffect(() => {
   
 
 
+
   return (
 
 
@@ -206,7 +208,6 @@ useEffect(() => {
           <li><a href="#services">Services</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="#location">Localisation</a></li>
-          <ChatBox />
 
         </ul>
        {/* Contact Icons */}
@@ -252,8 +253,11 @@ useEffect(() => {
       {/* À propos */}
  {/* À propos */}
 <section id="about" className="about-section">
+
+
   <motion.h2
- 
+          
+
   >
     À propos
   </motion.h2>
@@ -526,6 +530,56 @@ useEffect(() => {
           </a>
         </button>
       </section>
+
+
+
+
+
+      
+{/* --- Bulle flottante du chat --- */}
+
+
+<div className="chat-floating">
+  {!showChat && (
+    <div
+      className="chat-bubble"
+      onClick={() => setShowChat(true)}
+      style={{
+        backgroundColor: '#002244',
+        width: 65,
+        height: 65,
+        borderRadius: '50%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        cursor: 'pointer',
+        boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
+        color: '#fff',
+        fontSize: 28,
+        animation: 'float 3s ease-in-out infinite',
+      }}
+    >
+      <FaComments size={28} /> {/* ← icône ChatBox */}
+    </div>
+  )}
+
+  {/* Chat ouvert */}
+  {showChat && (
+    <div className="chatbox-container">
+   
+      {/* Header avec le X */}
+      <div className="chatbox-header">
+        <span>Innovabot 💡</span>
+        <button className="close-chat" onClick={() => setShowChat(false)}>✖</button>
+      </div>
+
+
+      {/* ChatBox */}
+      <ChatBox />
+    </div>
+  )}
+</div>
+
 
       {/* Pied de page */}
       <footer className="footer">
