@@ -3,13 +3,8 @@ const express = require('express');
 require('dotenv').config();
 
 const app = express();
-
 const cors = require('cors');
-
-
 app.use(cors({ origin: "*"}));
-
-
 const path = require('path');
 app.use('/images', express.static(path.join(__dirname, '../public/images')));
 const port = process.env.PORT || 3001;
@@ -17,6 +12,14 @@ app.use(cors()); // Allows cross-origin requests (e.g., from your React frontend
 app.use(express.json()); // Parses incoming JSON requests
 
 
+
+
+const chatRoutes = require('./routes/chat');
+app.use('/api/chat', chatRoutes);
+
+
+// Santé
+app.get('/api/health', (req, res) => res.json({ ok: true }));
 
 
 

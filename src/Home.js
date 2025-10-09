@@ -11,6 +11,7 @@ import contactImg from './assets/contact.jpg';
 import { useNavigate } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import welcomeBg from "./assets/welcome-bg.jpg";
+import ChatBox from "./ChatBox"; // ou "../components/ChatBox" selon ton dossier
 
 
 const Home = () => {
@@ -205,6 +206,7 @@ useEffect(() => {
           <li><a href="#services">Services</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="#location">Localisation</a></li>
+          <ChatBox />
 
         </ul>
        {/* Contact Icons */}

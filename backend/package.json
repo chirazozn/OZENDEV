@@ -1,7 +1,6 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "keywords": [],
   "author": "",
@@ -9,10 +8,12 @@
   "dependencies": {
     "axios": "^1.12.2",
     "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
+    "dotenv": "^16.6.1",
     "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
     "i18next": "^25.5.3",
     "mysql2": "^3.14.0",
+    "openai": "^6.2.0",
     "react-i18next": "^16.0.0"
   },
   "devDependencies": {
@@ -23,5 +24,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon index.js"
-  }
+  },
+  "description": ""
 }
