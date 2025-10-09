@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
+import { HiH1 } from 'react-icons/hi2';
 
 export default function ChatBox() {
   const [messages, setMessages] = useState([
@@ -25,8 +26,9 @@ export default function ChatBox() {
     setLoading(true);
 
     try {
-        const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
+        const API_URL = 'https://ozendev-backend.onrender.com';
 
+        
 const res = await axios.post(`${API_URL}/api/chat`, { message: input.trim() });
 
       if (res.data.reply) {
