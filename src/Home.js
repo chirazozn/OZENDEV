@@ -12,8 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import welcomeBg from "./assets/welcome-bg.jpg";
 import ChatBox from "./ChatBox"; // ou "../components/ChatBox" selon ton dossier
-import { FaComments } from 'react-icons/fa';
-
+import { FaComments, FaTimes } from 'react-icons/fa';
 
 const Home = () => {
   const [showContent, setShowContent] = useState(false);
