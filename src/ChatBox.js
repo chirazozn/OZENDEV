@@ -25,7 +25,10 @@ export default function ChatBox() {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:3001/api/chat', { message: input.trim() });
+        const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
+
+const res = await axios.post(`${API_URL}/api/chat`, { message: input.trim() });
+
       if (res.data.reply) {
         setMessages(prev => [...prev, { role: 'assistant', content: res.data.reply }]);
       } else {
