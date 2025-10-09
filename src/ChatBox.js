@@ -11,10 +11,9 @@ export default function ChatBox() {
 
   // Scroll automatique vers le bas
   useEffect(() => {
-    containerRef.current?.scrollTo({
-      top: containerRef.current.scrollHeight,
-      behavior: 'smooth'
-    });
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
   }, [messages, loading]);
 
   const send = async () => {
@@ -26,21 +25,31 @@ export default function ChatBox() {
     setLoading(true);
 
     try {
+      // Simulation d'une réponse (remplacer par votre appel API)
+      setTimeout(() => {
+        setMessages(prev => [...prev, { 
+          role: 'assistant', 
+          content: `Vous avez dit : "${input.trim()}". Comment puis-je vous aider ?` 
+        }]);
+        setLoading(false);
+      }, 1000);
+
+      /* Code API réel à décommenter :
       const API_URL = 'https://ozendev-backend.onrender.com';
       const res = await axios.post(`${API_URL}/api/chat`, { message: input.trim() });
-
       if (res.data.reply) {
         setMessages(prev => [...prev, { role: 'assistant', content: res.data.reply }]);
       } else {
         setMessages(prev => [...prev, { role: 'assistant', content: '⚠️ Réponse vide du serveur.' }]);
       }
+      setLoading(false);
+      */
     } catch (err) {
       console.error("Erreur Chat :", err);
       setMessages(prev => [
         ...prev,
         { role: 'assistant', content: '❌ Désolé, erreur serveur. Réessaie plus tard.' }
       ]);
-    } finally {
       setLoading(false);
     }
   };
@@ -53,70 +62,93 @@ export default function ChatBox() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', maxHeight: '480px' }}>
-    {/* Messages scrollables */}
-    <div ref={containerRef} style={{ flex: 1, overflowY: 'auto', padding: 12, backgroundColor: '#f9f9f9', boxSizing: 'border-box' }}>
-      {messages.map((m, i) => (
-        <div key={i} style={{ marginBottom: 10, textAlign: m.role === 'user' ? 'right' : 'left' }}>
-          <div style={{
-            display: 'inline-block',
-            padding: '8px 12px',
-            borderRadius: 12,
-            background: m.role === 'user' ? '#002244' : '#eaeaea',
-            color: m.role === 'user' ? '#fff' : '#000',
-            maxWidth: '85%',
-            wordWrap: 'break-word'
-          }}>
-            {m.content}
-          </div>
-        </div>
-      ))}
-      {loading && <div style={{ color: '#666', fontStyle: 'italic' }}>L’IA rédige...</div>}
-    </div>
-  
-    {/* Zone de saisie fixe */}
-    <div style={{
-      padding: 12,
-      borderTop: '1px solid #ddd',
-      backgroundColor: '#fff',
-      display: 'flex',
-      flexDirection: 'column',
-      boxSizing: 'border-box'
+    <div style={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      height: '100%',
+      width: '100%',
+      overflow: 'hidden'
     }}>
-      <textarea
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        onKeyDown={onKey}
-        placeholder="Écris ton message ici..."
-        style={{
-          width: '100%',
-          height: 50,
-          resize: 'none',
-          padding: 8,
-          borderRadius: 8,
-          border: '1px solid #ccc',
-          fontSize: 16,
-          boxSizing: 'border-box'
-        }}
-      />
-      <button
-        onClick={send}
-        disabled={loading}
-        style={{
-          marginTop: 8,
-          width: '100%',
-          padding: 10,
-          background: '#002244',
-          color: '#fff',
-          borderRadius: 8,
-          border: 'none',
-          cursor: 'pointer'
+      {/* Zone des messages - scrollable */}
+      <div 
+        ref={containerRef} 
+        style={{ 
+          flex: 1,
+          overflowY: 'auto', 
+          padding: '12px', 
+          backgroundColor: '#f9f9f9',
+          minHeight: 0,
+          maxHeight: '100%'
         }}
       >
-        {loading ? 'Envoi...' : 'Envoyer'}
-      </button>
+        {messages.map((m, i) => (
+          <div key={i} style={{ 
+            marginBottom: 10, 
+            textAlign: m.role === 'user' ? 'right' : 'left' 
+          }}>
+            <div style={{
+              display: 'inline-block',
+              padding: '8px 12px',
+              borderRadius: 12,
+              background: m.role === 'user' ? '#002244' : '#eaeaea',
+              color: m.role === 'user' ? '#fff' : '#000',
+              maxWidth: '85%',
+              wordWrap: 'break-word'
+            }}>
+              {m.content}
+            </div>
+          </div>
+        ))}
+        {loading && (
+          <div style={{ color: '#666', fontStyle: 'italic' }}>
+            L'IA rédige...
+          </div>
+        )}
+      </div>
+
+      {/* Zone de saisie - FIXE en bas */}
+      <div style={{
+        padding: '12px',
+        borderTop: '1px solid #ddd',
+        backgroundColor: '#fff',
+        display: 'flex',
+        flexDirection: 'column',
+        flexShrink: 0 // Empêche la compression
+      }}>
+        <textarea
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={onKey}
+          placeholder="Écris ton message ici..."
+          style={{
+            width: '100%',
+            height: '50px',
+            resize: 'none',
+            padding: '8px',
+            borderRadius: '8px',
+            border: '1px solid #ccc',
+            fontSize: '16px',
+            boxSizing: 'border-box'
+          }}
+        />
+        <button
+          onClick={send}
+          disabled={loading}
+          style={{
+            marginTop: '8px',
+            width: '100%',
+            padding: '10px',
+            background: loading ? '#555' : '#002244',
+            color: '#fff',
+            borderRadius: '8px',
+            border: 'none',
+            cursor: loading ? 'not-allowed' : 'pointer',
+            fontWeight: '600'
+          }}
+        >
+          {loading ? 'Envoi...' : 'Envoyer'}
+        </button>
+      </div>
     </div>
-  </div>
-  
   );
 }

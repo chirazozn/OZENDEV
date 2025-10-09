@@ -538,47 +538,33 @@ useEffect(() => {
 {/* --- Bulle flottante du chat --- */}
 
 
-<div className="chat-floating">
-  {!showChat && (
-    <div
-      className="chat-bubble"
-      onClick={() => setShowChat(true)}
-      style={{
-        backgroundColor: '#002244',
-        width: 65,
-        height: 65,
-        borderRadius: '50%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        cursor: 'pointer',
-        boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-        color: '#fff',
-        fontSize: 28,
-        animation: 'float 3s ease-in-out infinite',
-      }}
-    >
-      <FaComments size={28} /> {/* ← icône ChatBox */}
+<div>
+      {/* Bulle flottante */}
+      {!showChat && (
+        <div className="chat-floating" onClick={() => setShowChat(true)}>
+          <div className="chat-bubble">
+            <FaComments size={28} />
+          </div>
+        </div>
+      )}
+
+      {/* Chat ouvert */}
+      {showChat && (
+  <div className="chatbox-container">
+    {/* Header */}
+    <div className="chatbox-header">
+      <span>Innovabot 💡</span>
+      <button className="close-chat" onClick={() => setShowChat(false)}>✖</button>
     </div>
-  )}
 
-  {/* Chat ouvert */}
-  {showChat && (
-    <div className="chatbox-container">
-   
-      {/* Header avec le X */}
-      <div className="chatbox-header">
-        <span>Innovabot 💡</span>
-        <button className="close-chat" onClick={() => setShowChat(false)}>✖</button>
-      </div>
-
-
-      {/* ChatBox */}
+    {/* ChatBox prend toute la hauteur restante */}
+    <div style={{ flex: 1, overflow: 'hidden', display: 'flex' }}>
       <ChatBox />
     </div>
-  )}
-</div>
-
+  </div>
+)}
+    </div>
+  
 
       {/* Pied de page */}
       <footer className="footer">
