@@ -25,31 +25,21 @@ export default function ChatBox() {
     setLoading(true);
 
     try {
-      // Simulation d'une réponse (remplacer par votre appel API)
-      setTimeout(() => {
-        setMessages(prev => [...prev, { 
-          role: 'assistant', 
-          content: `Vous avez dit : "${input.trim()}". Comment puis-je vous aider ?` 
-        }]);
-        setLoading(false);
-      }, 1000);
-
-      /* Code API réel à décommenter :
       const API_URL = 'https://ozendev-backend.onrender.com';
       const res = await axios.post(`${API_URL}/api/chat`, { message: input.trim() });
+
       if (res.data.reply) {
         setMessages(prev => [...prev, { role: 'assistant', content: res.data.reply }]);
       } else {
         setMessages(prev => [...prev, { role: 'assistant', content: '⚠️ Réponse vide du serveur.' }]);
       }
-      setLoading(false);
-      */
     } catch (err) {
       console.error("Erreur Chat :", err);
       setMessages(prev => [
         ...prev,
         { role: 'assistant', content: '❌ Désolé, erreur serveur. Réessaie plus tard.' }
       ]);
+    } finally {
       setLoading(false);
     }
   };
@@ -60,6 +50,7 @@ export default function ChatBox() {
       send();
     }
   };
+  
 
   return (
     <div style={{ 
