@@ -53,76 +53,70 @@ export default function ChatBox() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      {/* Messages */}
-      <div
-        ref={containerRef}
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', maxHeight: '480px' }}>
+    {/* Messages scrollables */}
+    <div ref={containerRef} style={{ flex: 1, overflowY: 'auto', padding: 12, backgroundColor: '#f9f9f9', boxSizing: 'border-box' }}>
+      {messages.map((m, i) => (
+        <div key={i} style={{ marginBottom: 10, textAlign: m.role === 'user' ? 'right' : 'left' }}>
+          <div style={{
+            display: 'inline-block',
+            padding: '8px 12px',
+            borderRadius: 12,
+            background: m.role === 'user' ? '#002244' : '#eaeaea',
+            color: m.role === 'user' ? '#fff' : '#000',
+            maxWidth: '85%',
+            wordWrap: 'break-word'
+          }}>
+            {m.content}
+          </div>
+        </div>
+      ))}
+      {loading && <div style={{ color: '#666', fontStyle: 'italic' }}>L’IA rédige...</div>}
+    </div>
+  
+    {/* Zone de saisie fixe */}
+    <div style={{
+      padding: 12,
+      borderTop: '1px solid #ddd',
+      backgroundColor: '#fff',
+      display: 'flex',
+      flexDirection: 'column',
+      boxSizing: 'border-box'
+    }}>
+      <textarea
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        onKeyDown={onKey}
+        placeholder="Écris ton message ici..."
         style={{
-          flex: 1,
-          overflowY: 'auto',
-          padding: 12,
-          backgroundColor: '#f9f9f9'
+          width: '100%',
+          height: 50,
+          resize: 'none',
+          padding: 8,
+          borderRadius: 8,
+          border: '1px solid #ccc',
+          fontSize: 16,
+          boxSizing: 'border-box'
+        }}
+      />
+      <button
+        onClick={send}
+        disabled={loading}
+        style={{
+          marginTop: 8,
+          width: '100%',
+          padding: 10,
+          background: '#002244',
+          color: '#fff',
+          borderRadius: 8,
+          border: 'none',
+          cursor: 'pointer'
         }}
       >
-        {messages.map((m, i) => (
-          <div key={i} style={{ marginBottom: 10, textAlign: m.role === 'user' ? 'right' : 'left' }}>
-            <div style={{
-              display: 'inline-block',
-              padding: '8px 12px',
-              borderRadius: 12,
-              background: m.role === 'user' ? '#002244' : '#eaeaea',
-              color: m.role === 'user' ? '#fff' : '#000',
-              maxWidth: '85%',
-              wordWrap: 'break-word'
-            }}>
-              {m.content}
-            </div>
-          </div>
-        ))}
-        {loading && <div style={{ color: '#666', fontStyle: 'italic' }}>L’IA rédige...</div>}
-      </div>
-
-      {/* Zone de saisie */}
-      <div style={{
-        padding: 12,
-        borderTop: '1px solid #ddd',
-        backgroundColor: '#fff',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 8
-      }}>
-        <textarea
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={onKey}
-          placeholder="Écris ton message ici..."
-          style={{
-            width: '100%',
-            minHeight: 60,
-            resize: 'none',
-            padding: 8,
-            borderRadius: 8,
-            border: '1px solid #ccc',
-            fontSize: 16, // 🔹 empêche zoom mobile
-            boxSizing: 'border-box'
-          }}
-        />
-        <button
-          onClick={send}
-          disabled={loading}
-          style={{
-            width: '100%',
-            padding: 10,
-            background: '#002244',
-            color: '#fff',
-            borderRadius: 8,
-            border: 'none',
-            cursor: 'pointer'
-          }}
-        >
-          {loading ? 'Envoi...' : 'Envoyer'}
-        </button>
-      </div>
+        {loading ? 'Envoi...' : 'Envoyer'}
+      </button>
     </div>
+  </div>
+  
   );
 }
