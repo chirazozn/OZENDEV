@@ -50,7 +50,6 @@ export default function ChatBox() {
       send();
     }
   };
-  
 
   return (
     <div style={{ 
