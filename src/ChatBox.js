@@ -83,7 +83,9 @@ export default function ChatBox() {
               background: m.role === 'user' ? '#002244' : '#eaeaea',
               color: m.role === 'user' ? '#fff' : '#000',
               maxWidth: '85%',
-              wordWrap: 'break-word'
+              wordWrap: 'break-word',
+              whiteSpace: 'pre-line', // ✅ garde les espaces et les sauts de ligne
+              lineHeight: 1.5,  
             }}>
               {m.content}
             </div>
