@@ -194,21 +194,26 @@ useEffect(() => {
       <nav className="navbar">
         <img src={logo} alt="Logo" className="logo" />
         <div className="hamburger" onClick={toggleMenu}>
-          {!menuOpen ? (
+      
             <img src={hamburgerIcon} alt="Menu" className="hamburger-img" />
-          ) : (
-            <div className="close-btn">✕</div>
-          )}
+      
         </div>
 
-        <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
-          <li><a href="#about">À propos</a></li>
-          <li><a href="#realisations">Réalisations</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#location">Localisation</a></li>
+  <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
+   
+    <div className="nav-top">
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#realisations">Réalisations</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#location">Localisation</a></li>
+    </div>
 
-        </ul>
+    <div className="nav-bottom">
+      <p>📍 Alger, Algérie</p>
+      <p>📞 0555 55 55 55</p>
+    </div>
+  </ul>
        {/* Contact Icons */}
   <div className="contact-menuicons">
     <a href="tel:0555555555" title="Appeler">
