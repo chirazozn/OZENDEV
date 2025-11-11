@@ -245,7 +245,7 @@ const ServiceDetails = () => {
         <motion.div className="contact-info" variants={fadeInUp}>
           <p><strong>Adresse :</strong> Alger-Said Hamdine</p>
           <p><strong>Téléphone :</strong> +213 456 789</p>
-          <p><strong>Email :</strong> contact@innovadev.com</p>
+          <p><strong>Email :</strong> Contact@innovazen.dev</p>
         </motion.div>
         <motion.p variants={fadeInUp}>Boîte de développement : innovazen © 2025</motion.p>
       </motion.footer>
