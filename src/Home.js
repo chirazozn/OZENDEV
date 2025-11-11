@@ -584,7 +584,7 @@ useEffect(() => {
           <p><strong>Adresse :</strong> alger-said hamdine </p>
           <p><strong>Téléphone 1 :</strong> +213 456 789</p>
           <p><strong>Téléphone 2 :</strong> +213 987 654</p>
-          <p><strong>Email :</strong> Contact@innovazen.dev</p>
+          <p><strong>Email :</strong>Contact@innovazen.dev</p>
         </div>
 
         <p>Boîte de développement : innovazen © 2025</p>
