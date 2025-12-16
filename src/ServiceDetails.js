@@ -157,7 +157,7 @@ const ServiceDetails = () => {
         <p>{service.description}</p>
       </motion.section>
 
-      {/* Realisation Section */}
+      {/* Realisation Section 
       <motion.section 
         className="realisation-section"
         initial="hidden"
@@ -208,7 +208,7 @@ const ServiceDetails = () => {
         >
           Voir tout
         </motion.a>
-      </motion.section>
+      </motion.section>*/}
 
       {/* Footer */}
       <motion.footer 

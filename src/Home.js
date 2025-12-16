@@ -212,7 +212,7 @@ useEffect(() => {
 
     <div className="nav-bottom">
       <p>📍 Alger, Algérie</p>
-      <p>📞 05 56 84 02 98</p>
+      <p>📞 0556840298</p>
     </div>
   </ul>
        {/* Contact Icons */}
