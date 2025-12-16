@@ -203,7 +203,8 @@ useEffect(() => {
    
     <div className="nav-top">
       <li><a href="#about">À propos</a></li>
-      <li><a href="#realisations">Réalisations</a></li>
+       {/* <li><a href="#realisations">Réalisations</a></li>     */}
+
       <li><a href="#services">Services</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#location">Localisation</a></li>
@@ -211,12 +212,12 @@ useEffect(() => {
 
     <div className="nav-bottom">
       <p>📍 Alger, Algérie</p>
-      <p>📞 0555 55 55 55</p>
+      <p>📞 05 56 84 02 98</p>
     </div>
   </ul>
        {/* Contact Icons */}
   <div className="contact-menuicons">
-    <a href="tel:0555555555" title="Appeler">
+    <a href="tel:0556840298" title="Appeler">
       <FaPhone className="icon-menucontact" />
     </a>
     <a href="mailto:innovazen.contact1@gmail.com" title="Envoyer un e-mail">
@@ -316,6 +317,7 @@ useEffect(() => {
 
 
 
+      {/* Services 
 
       <section id="realisations" className="nos-realisations">
       <div className="header">
@@ -345,7 +347,7 @@ useEffect(() => {
           ))}
         </div>
       )}
-    </section>
+    </section>*/}
 
 
 
@@ -401,7 +403,7 @@ useEffect(() => {
     transition={{ duration: 0.5, delay: 0.3 }}
   >
     <motion.a 
-      href="tel:0555555555" 
+      href="tel:0556840298" 
       title="Appeler"
       whileHover={{ scale: 1.2, rotate: 5 }}
       whileTap={{ scale: 0.9 }}
@@ -582,8 +584,7 @@ useEffect(() => {
 
         <div className="contact-info">
           <p><strong>Adresse :</strong> alger-said hamdine </p>
-          <p><strong>Téléphone 1 :</strong> +213 456 789</p>
-          <p><strong>Téléphone 2 :</strong> +213 987 654</p>
+          <p><strong>Téléphone</strong> +213 556 84 02 98</p>
           <p><strong>Email :</strong>Contact@innovazen.dev</p>
         </div>
 
